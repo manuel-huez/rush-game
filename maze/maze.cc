@@ -10,14 +10,34 @@ namespace RMaze
     gen.fill_rooms();
   }
 
-  std::ostream& operator<<(std::ostream& str, const Maze& maze)
+  const std::vector<int>& Maze::map_get() const
   {
-    for (int x = 0; x < size_; x++)
+    return map_;
+  }
+  std::vector<int>& Maze::map_get() 
+  {
+    return map_;
+  }
+  
+  unsigned Maze::size_get() const
+  {
+    return size_;
+  }
+  
+  void Maze::set(int x, int y, int type)
+  {
+    map_.at(x + size_ * y) = type;
+  }
+  std::ostream& operator<<(std::ostream& str, const Maze& ma)
+  {
+    unsigned size = ma.size_get();
+    for (unsigned x = 0; x < size; x++)
     {
-      for (int y = 0; y < size_; y++)
+      for (unsigned y = 0; y < size; y++)
       {
-        str << " " << map_.at(x + size_ * y);
+        str << " " << ma.map_get().at(x + size * y);
       }
+      std::cout << std::endl;
     }
     return str;
   }
