@@ -1,25 +1,27 @@
 #pragma once
 
+#include "event-handler.hh"
 #include <string>
 #include <SFML/Graphics.hpp>
 
-namespace Engine
+namespace E
 {
 
     class Engine
     {
     public:
-        Engine(int width, int height, std::string title);
+        Engine(const unsigned width, const unsigned height,
+            sf::RenderWindow& window);
 
         sf::RenderWindow& window_get() const;
-        EventHandler& eventi_handler_get() const;
+        EventHandler& event_handler_get();
 
         void draw() const;
         void run();
     private:
-        const int width_;
-        const int height_;
-        sf::RenderWindow window_;
+        const unsigned width_;
+        const unsigned height_;
+        sf::RenderWindow& window_;
         EventHandler event_handler_;
     };
 
