@@ -8,10 +8,13 @@ CXXBIN = ./game
 
 all: game
 
-game: $(CXXOBJ)
+bin: $(CXXOBJ)
 	$(CXX) $(CXXFLAGS) $^ -o $(CXXBIN)
+
+game: bin
+	$(CXXBIN)
 
 clean:
 	$(RM) $(OBJ) $(BIN)
 
-.PHONY: all game clean
+.PHONY: all bin game clean
