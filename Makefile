@@ -4,7 +4,8 @@ LDLIBS=-lsfml-graphics
 
 CXXSRC = src/game.cc \
 		 src/engine/engine.cc \
-		 src/event-handler.cc
+		 src/event-handler.cc \
+		 src/color.cc
 CXXOBJ = $(CXXSRC:.cc=.o)
 CXXBIN = ./game
 
@@ -17,6 +18,6 @@ game: bin
 	$(CXXBIN)
 
 clean:
-	$(RM) $(OBJ) $(BIN)
+	$(RM) $(CXXOBJ) $(CXXBIN)
 
 .PHONY: all bin game clean
