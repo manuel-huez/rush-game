@@ -18,6 +18,7 @@ namespace RMaze
       const std::vector<int>& map_get() const;
       std::vector<int>& map_get();
       void set(int x, int y, int type);
+      int get(int x, int y) const;
       unsigned size_get() const;
     private:
       unsigned size_;

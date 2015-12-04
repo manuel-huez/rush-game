@@ -8,9 +8,11 @@ namespace RMaze
   class Room
   {
     public:
-      Room(int width, int height, int type)
+      Room(int width, int height, int x, int y, int type)
         : width_(width)
         , height_(height)
+        , posX_(x)
+        , posY_(y)
         , type_(type)
       {}
       int width_get() const;
@@ -19,10 +21,10 @@ namespace RMaze
       int x_get() const;
       int y_get() const;
     private:
-      int posX_;
-      int posY_;
       int width_;
       int height_;
+      int posX_;
+      int posY_;
       int type_;
   };
 }

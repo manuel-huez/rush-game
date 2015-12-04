@@ -7,7 +7,6 @@ namespace RMaze
   {
     Generator gen(*this);
     gen.generate_rooms();
-    gen.fill_rooms();
   }
 
   const std::vector<int>& Maze::map_get() const
@@ -28,14 +27,19 @@ namespace RMaze
   {
     map_.at(x + size_ * y) = type;
   }
+
+  int Maze::get(int x, int y) const
+  {
+    return map_.at(x + size_ * y);
+  }
   std::ostream& operator<<(std::ostream& str, const Maze& ma)
   {
     unsigned size = ma.size_get();
-    for (unsigned x = 0; x < size; x++)
+    for (unsigned y = 0; y < size; y++)
     {
-      for (unsigned y = 0; y < size; y++)
+      for (unsigned x = 0; x < size; x++)
       {
-        str << " " << ma.map_get().at(x + size * y);
+        str << " " << (ma.map_get().at(x + size * y) ? "O" : ".");
       }
       std::cout << std::endl;
     }
