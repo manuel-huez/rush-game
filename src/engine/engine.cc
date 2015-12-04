@@ -11,7 +11,7 @@ namespace E
         : width_{width}
         , height_{height}
         , window_{window}
-        , event_handler_{EventHandler()}
+        , scene_{Scene()}
     {
     }
 
@@ -20,26 +20,29 @@ namespace E
         return window_;
     }
 
-    EventHandler& Engine::event_handler_get()
+    void Engine::scene_set(Scene& scene)
     {
-        return event_handler_;
+        scene_ = scene;
     }
 
-    void Engine::draw() const
+    Scene& Engine::scene_get()
     {
-        ::sf::CircleShape shape(100.f);
-        shape.setFillColor(Color::Orange());
-        window_get().draw(shape);
+        return scene_;
+    }
+
+    EventHandler& Engine::event_handler_get()
+    {
+        return scene_.event_handler_get();
     }
 
     void Engine::run()
     {
         while (window_.isOpen())
         {
-            event_handler_.handle(window_get());
+            scene_get().update(window_get());
 
             window_.clear();
-            draw();
+            scene_get().draw(window_get());
             window_.display();
         }
     }
