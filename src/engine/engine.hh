@@ -1,6 +1,6 @@
 #pragma once
 
-#include "event-handler.hh"
+#include "scene.hh"
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -14,6 +14,8 @@ namespace E
             sf::RenderWindow& window);
 
         sf::RenderWindow& window_get() const;
+        void scene_set(Scene& scene);
+        Scene& scene_get();
         EventHandler& event_handler_get();
 
         void draw() const;
@@ -22,7 +24,7 @@ namespace E
         const unsigned width_;
         const unsigned height_;
         sf::RenderWindow& window_;
-        EventHandler event_handler_;
+        Scene scene_;
     };
 
 }
