@@ -15,4 +15,14 @@ namespace RMaze
   {
     return type_;
   }
+
+  int Room::x_get() const
+  {
+    return posX_;
+  }
+
+  int Room::y_get() const
+  {
+    return posY_;
+  }
 }
