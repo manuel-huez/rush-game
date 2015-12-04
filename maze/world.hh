@@ -1,7 +1,8 @@
 #ifndef WORLD_H
 # define WORLD_H
 
-#include <vector>
+# include <vector>
+# include "Maze.hh"
 
 namespace RMaze
 {
@@ -16,7 +17,7 @@ namespace RMaze
       
     private:
       unsigned size_;
-      std::vector<std::vector<int>> map_;
+      Maze& maze_;
   };
 }
 
