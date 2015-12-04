@@ -2,7 +2,9 @@ CXX = g++
 CXXFLAGS = -fPIC -Wall -Wextra -Werror -pedantic -std=c++14
 LDLIBS=-lsfml-graphics
 
-CXXSRC = src/game.cc
+CXXSRC = src/game.cc \
+		 src/engine/engine.cc \
+		 src/event-handler.cc
 CXXOBJ = $(CXXSRC:.cc=.o)
 CXXBIN = ./game
 
