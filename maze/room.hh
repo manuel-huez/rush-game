@@ -3,7 +3,7 @@
 
 
 
-template RMaze
+namespace RMaze
 {
   class Room
   {
@@ -13,10 +13,14 @@ template RMaze
         , height_(height)
         , type_(type)
       {}
-      int width_get();
-      int height_get();
-      int type_get();
+      int width_get() const;
+      int height_get() const;
+      int type_get() const;
+      int x_get() const;
+      int y_get() const;
     private:
+      int posX_;
+      int posY_;
       int width_;
       int height_;
       int type_;
