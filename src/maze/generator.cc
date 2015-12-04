@@ -22,7 +22,7 @@ namespace RMaze
     }
     return true;
   }
-  void Generator::generate_rooms()
+  void Generator::generate_rooms(int strech, float density)
   {
     unsigned number = rand() % 3 + 3;
     std::vector<Room> rooms;
