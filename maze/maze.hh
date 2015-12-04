@@ -1,16 +1,16 @@
-#ifndef GENERATOR_H
-# define GENERATOR_H
+#ifndef MAZE_H
+# define MAZE_H
 
 namespace RMaze
 {
   class Maze
   {
     public:
-      Generator(World& w)
-        : world_(w)
+      Generator()
       {}
     private:
-      World& world_;
+      unsigned size_;
+      std::vector<std::vector<int>> map_;
   };
 }
 #endif
