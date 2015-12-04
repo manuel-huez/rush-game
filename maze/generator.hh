@@ -2,9 +2,12 @@
 # define GENERATOR_H
 
 # include "maze.hh"
+# include "room.hh"
+# include <vector>
 
 namespace RMaze
 {
+
   class Generator
   {
     public:
@@ -13,7 +16,10 @@ namespace RMaze
       {}
 
     private:
-        Maze& maze_;
+      void generate_rooms();
+      void fill_rooms();
+      Maze& maze_;
+      std::vector<Room>& rooms_;
   };
 }
 
