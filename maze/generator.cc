@@ -13,7 +13,7 @@ namespace RMaze
     {
       int width = rand() % 10 + 3;
       int height = rand() %10 + 3;
-      Room room(width, height);
+      Room room(width, height, 1);
       rooms.push_back(room);
     }
     rooms_ = rooms;
@@ -21,7 +21,7 @@ namespace RMaze
 
   void Generator::fill_rooms()
   {
-    for (auto i : rooms)
+    for (auto i : rooms_)
     {
       for (int j = 0; j < i.width_get(); j++)
       {

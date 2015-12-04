@@ -14,12 +14,11 @@ namespace RMaze
       Generator(Maze& maze)
         : maze_(maze)
       {}
-
-    private:
       void generate_rooms();
       void fill_rooms();
+    private:
       Maze& maze_;
-      std::vector<Room>& rooms_;
+      std::vector<Room> rooms_;
   };
 }
 
