@@ -2,11 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace Engine
+namespace E
 {
     class Color
     {
     public:
-        static const sf::Color Orange = sf::Color(243, 156, 18);
-    }
+        static sf::Color& Orange();
+    };
 }

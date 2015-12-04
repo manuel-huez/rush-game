@@ -1,17 +1,13 @@
 #pragma once
 
-#include "engine.hh"
+#include <SFML/Graphics.hpp>
 
-namespace Engine
+namespace E
 {
 
     class EventHandler
     {
     public:
-        EventHandler(Engine& engine);
-
-        void handle();
-    private:
-        Engine& engine_;
-    }
+        void handle(sf::RenderWindow& window);
+    };
 }
