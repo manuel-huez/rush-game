@@ -10,11 +10,11 @@ int main()
 {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(200, 200), "My game",
+    sf::RenderWindow window(sf::VideoMode(1000, 1000), "My game",
             sf::Style::Default, settings);
-    E::Engine engine(200, 200, window);
+    E::Engine engine(1000, 1000, window);
 
-    auto s = std::make_shared<Scenes::MenuScene>(window);
+    auto s = std::make_shared<Scenes::MainScene>(window);
     engine.scene_set(std::static_pointer_cast<E::Scene>(s));
 
     while (window.isOpen())
