@@ -7,7 +7,7 @@
 namespace E
 {
 
-    Scene::Scene()
+    Scene::Scene(sf::RenderWindow&)
         : objects_{std::map<std::string, Object>()}
     {}
 
