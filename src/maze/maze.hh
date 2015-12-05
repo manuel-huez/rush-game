@@ -11,6 +11,9 @@ namespace RMaze
   class Maze
   {
     public:
+      Maze()
+        : size_(0)
+      {}
       Maze(const unsigned size)
         : size_(size)
       {

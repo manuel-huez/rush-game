@@ -100,14 +100,14 @@ namespace RMaze
 
   void Generator::link_rooms(Room& a, Room& b)
   {
-    int ax = a.x_get();
-    int ay = a.y_get();
-    int bx = b.x_get();
-    int by = b.y_get();
-    int ax1 = a.x_get();
-    int ay1 = a.y_get();
-    int bx1 = b.x_get();
-    int by1 = b.y_get();
+    int ax = a.x_get() + a.width_get() / 2;
+    int ay = a.y_get() + a.height_get() / 2;
+    int bx = b.x_get() + b.width_get() / 2;
+    int by = b.y_get() + b.height_get() / 2;
+    int ax1 = ax;
+    int ay1 = ay;
+    int bx1 = bx;
+    int by1 = by;
 
     if (ax < bx)
     {
