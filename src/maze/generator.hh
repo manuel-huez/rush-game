@@ -19,6 +19,7 @@ namespace RMaze
       float calculate_density(Room& room) const;
       void link();
     private:
+      int get_floor(int x, int y) const;
       bool is_place_available(Room& room) const;
       int find_closest_notlinked(Room& room) const;
       void link_rooms(Room& a, Room& b);
