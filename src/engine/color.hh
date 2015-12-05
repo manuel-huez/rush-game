@@ -8,5 +8,9 @@ namespace E
     {
     public:
         static sf::Color& Orange();
+        static sf::Color& Red();
+        static sf::Color& Dark();
+        static sf::Color& White();
+        static sf::Color& Grey();
     };
 }
