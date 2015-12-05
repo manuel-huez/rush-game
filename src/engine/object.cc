@@ -27,6 +27,11 @@ namespace E
         type_ = ObjectE::TEXT;
     }
 
+    ObjectE Object::type_get() const
+    {
+        return type_;
+    }
+
     sf::CircleShape& Object::circle_shape_get()
     {
         return circle_;

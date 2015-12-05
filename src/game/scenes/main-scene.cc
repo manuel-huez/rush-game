@@ -13,20 +13,20 @@
 namespace Scenes
 {
 
-  MainScene::MainScene(E::Engine& engine, sf::RenderWindow& window)
-    : Scene::Scene(engine, window)
-  {
-    auto bg = std::make_shared<Objects::Background>(*this, window);
-    gobject_add("0background", std::static_pointer_cast<E::GameObject>(bg));
+    MainScene::MainScene(E::Engine& engine, sf::RenderWindow& window)
+        : Scene::Scene(engine, window)
+    {
+        auto bg = std::make_shared<Objects::Background>(*this, window);
+        gobject_add("0background", std::static_pointer_cast<E::GameObject>(bg));
 
-    auto maze = std::make_shared<Objects::Maze>(*this, window);
-    gobject_add("1maze", std::static_pointer_cast<E::GameObject>(maze));
-  }
+        auto maze = std::make_shared<Objects::Maze>(*this, window);
+        gobject_add("1maze", std::static_pointer_cast<E::GameObject>(maze));
+    }
 
-  void MainScene::update(E::Engine& engine,
-          sf::RenderWindow& window, sf::Time& dt)
-  {
-    Scene::update(engine, window, dt);
-  }
+    void MainScene::update(E::Engine& engine,
+            sf::RenderWindow& window, sf::Time& dt)
+    {
+        Scene::update(engine, window, dt);
+    }
 
 }
