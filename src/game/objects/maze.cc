@@ -12,7 +12,7 @@ namespace Objects
   Maze::Maze(E::Scene& scene, sf::RenderWindow& window)
     : GameObject(scene, window)
   {
-    RMaze::World world(50, 4, 0.4f);
+    RMaze::World world(50, 7, 0.35f);
     int mazeSize = 50;
     RMaze::Maze& ma = world.get_maze();
     float tileSize  = window.getSize().x / mazeSize;
