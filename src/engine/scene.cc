@@ -3,26 +3,27 @@
 #include "engine.hh"
 #include <map>
 #include <string>
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 namespace E
 {
 
     Scene::Scene(Engine&, sf::RenderWindow&)
-        : gobjects_{std::map<std::string, GameObject>()}
+        : gobjects_{std::map<std::string, std::shared_ptr<GameObject>>()}
     {}
 
     Scene::~Scene()
     {}
 
-    void Scene::gobject_add(std::string key, GameObject obj)
+    void Scene::gobject_add(std::string key, std::shared_ptr<GameObject> obj)
     {
         gobjects_[key] = obj;
     }
 
     GameObject& Scene::gobject_get(std::string key)
     {
-        return gobjects_.at(key);
+        return *gobjects_.at(key);
     }
 
     void Scene::handle_events(Engine&,
@@ -39,13 +40,13 @@ namespace E
     void Scene::update(Engine&, sf::RenderWindow& window, sf::Time& dt)
     {
         for (auto x: gobjects_)
-            x.second.update(*this, window, dt);
+            (*(x.second)).update(*this, window, dt);
     }
 
     void Scene::draw(sf::RenderWindow& window) const
     {
         for (auto x: gobjects_)
-            x.second.draw(window);
+            (*(x.second)).draw(window);
     }
 
 }

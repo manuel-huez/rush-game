@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include <memory>
 
 
 namespace Scenes
@@ -15,11 +16,11 @@ namespace Scenes
   MainScene::MainScene(E::Engine& engine, sf::RenderWindow& window)
     : Scene::Scene(engine, window)
   {
-    E::GameObject bg = Objects::Background(*this, window);
-    gobject_add("0background", bg);
+    auto bg = std::make_shared<Objects::Background>(*this, window);
+    gobject_add("0background", std::static_pointer_cast<E::GameObject>(bg));
 
-    E::GameObject maze = Objects::Maze(*this, window);
-    gobject_add("1maze", maze);
+    auto maze = std::make_shared<Objects::Maze>(*this, window);
+    gobject_add("1maze", std::static_pointer_cast<E::GameObject>(maze));
   }
 
   void MainScene::update(E::Engine& engine,
