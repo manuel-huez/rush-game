@@ -54,7 +54,7 @@ namespace Scenes
       RMaze::Room& roomP)
   {
     auto ma = maze_->get_maze();
-    for (int i = 0; i < 13; i++)
+    for (int i = 0; i < 15; i++)
     {
       int size = ma.size_get();
 
