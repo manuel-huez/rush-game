@@ -1,5 +1,4 @@
 #include "engine.hh"
-#include "event-handler.hh"
 #include "color.hh"
 #include <string>
 #include <memory>
