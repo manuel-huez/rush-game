@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <cmath>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 namespace E
@@ -14,7 +15,6 @@ namespace E
     GameObject::GameObject()
         : objects_{std::map<std::string, Object>()}
         , circles_{std::map<std::string, sf::CircleShape>()}
-        , rectangles_{std::map<std::string, sf::RectangleShape>()}
     {}
     GameObject::~GameObject()
     {}
@@ -50,6 +50,11 @@ namespace E
         return objects_[key];
     }
 
+    void GameObject::object_set(std::string key, Object obj)
+    {
+        objects_[key] = obj;
+    }
+
     void GameObject::circle_add(std::string key, sf::CircleShape c)
     {
         circles_[key] = c;
@@ -60,14 +65,9 @@ namespace E
         return circles_[key];
     }
 
-    void GameObject::rectangle_add(std::string key, sf::RectangleShape r)
+    void GameObject::circle_set(std::string key, sf::CircleShape c)
     {
-        rectangles_[key] = r;
-    }
-
-    sf::RectangleShape& GameObject::rectangle_get(std::string key)
-    {
-        return rectangles_[key];
+        circles_[key] = c;
     }
 
     bool GameObject::intersects(sf::CircleShape& c)
@@ -89,7 +89,9 @@ namespace E
     }
 
     void GameObject::update(Scene&, sf::RenderWindow&, sf::Time&)
-    {}
+    {
+        std::cout << "Base update" << std::endl;
+    }
 
     void GameObject::draw(sf::RenderWindow& window)
     {
