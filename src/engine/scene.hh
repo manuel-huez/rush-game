@@ -11,7 +11,7 @@ namespace E
     class Scene
     {
     public:
-        Scene();
+        Scene(sf::RenderWindow& window);
         virtual ~Scene();
 
         void object_add(std::string key, Object obj);
