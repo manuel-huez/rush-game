@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 namespace E
 {
@@ -11,6 +12,9 @@ namespace E
     Scene::Scene()
         : event_handler_{EventHandler()}
         , objects_{std::map<std::string, Object>()}
+    {}
+
+    Scene::~Scene()
     {}
 
     EventHandler& Scene::event_handler_get()
@@ -30,6 +34,7 @@ namespace E
 
     void Scene::update(sf::RenderWindow& window)
     {
+        std::cout << "Hey\n";
         event_handler_.handle(window);
     }
 
