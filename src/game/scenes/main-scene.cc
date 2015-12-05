@@ -23,7 +23,8 @@ namespace Scenes
         maze_ = std::make_shared<Objects::Maze>(*this, window);
         gobject_add("1maze", std::static_pointer_cast<E::GameObject>(maze_));
 
-        player_ = std::make_shared<Objects::Player>(*this, window, 10);
+        sf::Vector2f s(10, 10);
+        player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
         gobject_add("2player", std::static_pointer_cast<E::GameObject>(player_));
     }
 
