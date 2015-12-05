@@ -6,7 +6,8 @@ namespace RMaze
   void Maze::create()
   {
     Generator gen(*this);
-    gen.generate_rooms();
+    gen.generate_rooms(5, 0.45f);
+    gen.link();
   }
 
   const std::vector<int>& Maze::map_get() const
