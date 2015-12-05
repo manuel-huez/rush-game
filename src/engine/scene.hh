@@ -18,7 +18,7 @@ namespace E
         EventHandler& event_handler_get();
         void object_add(std::string key, Object obj);
         Object& object_get(std::string key);
-        virtual void update(sf::RenderWindow& window);
+        virtual void update(sf::RenderWindow& window, sf::Time& dt);
         virtual void draw(sf::RenderWindow& window) const;
     private:
         EventHandler event_handler_;

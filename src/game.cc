@@ -16,7 +16,8 @@ int main()
     auto s = std::make_shared<Scenes::MainScene>();
     engine.scene_set(std::static_pointer_cast<E::Scene>(s));
 
-    engine.run();
+    while (window.isOpen())
+        engine.run();
 
     return 0;
 }
