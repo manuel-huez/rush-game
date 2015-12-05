@@ -27,6 +27,11 @@ namespace E
         type_ = ObjectE::TEXT;
     }
 
+    ObjectE Object::type_get() const
+    {
+        return type_;
+    }
+
     sf::CircleShape& Object::circle_shape_get()
     {
         return circle_;
@@ -40,6 +45,24 @@ namespace E
     sf::Text& Object::text_get()
     {
         return text_;
+    }
+
+    void Object::position_set(sf::Vector2f pos)
+    {
+        switch (type_)
+        {
+            case CIRCLE:
+                circle_.setPosition(pos);
+                break;
+            case RECTANGLE:
+                rectangle_.setPosition(pos);
+                break;
+            case TEXT:
+                text_.setPosition(pos);
+                break;
+            default:
+                break;
+        }
     }
 
     void Object::draw(sf::RenderWindow& window)

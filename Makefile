@@ -14,6 +14,7 @@ CXXSRC = src/game.cc \
 				 src/game/objects/background.cc \
 				 src/game/objects/maze.cc \
 				 src/game/objects/menu.cc \
+				 src/game/objects/player.cc \
 				 src/maze/maze.cc \
 				 src/maze/generator.cc \
 				 src/maze/room.cc	\
@@ -28,7 +29,8 @@ all: game
 bin: $(CXXOBJ)
 	$(CXX) $(CXXFLAGS) $(LDLIBS) $^ -o $(CXXBIN)
 
-game: bin
+game:
+	$(MAKE) -Bj bin
 	$(CXXBIN)
 
 clean:
