@@ -18,7 +18,13 @@ namespace Objects
         auto s = E::Object(sf::CircleShape(size));
         s.circle_shape_get().setFillColor(E::Color::Blue());
         s.circle_shape_get().setPosition(pos);
-        object_add("0cursor", s, true);
+        object_add("0point", s, true);
+
+        auto noise = E::Object(sf::CircleShape(size * 3));
+        noise.circle_shape_get().setFillColor(sf::Color::Transparent);
+        noise.circle_shape_get().setOutlineColor(E::Color::LightBlue());
+        noise.circle_shape_get().setOutlineThickness(size / 2);
+        object_add("1noise", noise, false);
     }
 
     void Player::update(E::Scene& scene,
@@ -29,12 +35,12 @@ namespace Objects
         auto pos = position_get();
         pos.x   -= size_;
         pos.y   -= size_;
-        auto c   = circle_get("0cursor");
+        auto c   = circle_get("0point");
         c.setPosition(pos);
-        circle_set("0cursor", c);
-        auto c2 = object_get("0cursor");
+        circle_set("0point", c);
+        auto c2 = object_get("0point");
         c2.position_set(pos);
-        object_set("0cursor", c2);
+        object_set("0point", c2);
     }
 
     sf::Vector2f Player::position_get()
