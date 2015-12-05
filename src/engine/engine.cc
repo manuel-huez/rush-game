@@ -2,6 +2,7 @@
 #include "event-handler.hh"
 #include "color.hh"
 #include <string>
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 namespace E
@@ -11,7 +12,7 @@ namespace E
         : width_{width}
         , height_{height}
         , window_{window}
-        , scene_{Scene()}
+        , scene_{nullptr}
     {
     }
 
@@ -20,19 +21,19 @@ namespace E
         return window_;
     }
 
-    void Engine::scene_set(Scene& scene)
+    void Engine::scene_set(std::shared_ptr<Scene> scene)
     {
         scene_ = scene;
     }
 
     Scene& Engine::scene_get()
     {
-        return scene_;
+        return *scene_;
     }
 
     EventHandler& Engine::event_handler_get()
     {
-        return scene_.event_handler_get();
+        return scene_get().event_handler_get();
     }
 
     void Engine::run()
