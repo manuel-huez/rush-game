@@ -88,6 +88,15 @@ namespace E
         return false;
     }
 
+    bool GameObject::intersects(GameObject& obj)
+    {
+        for (auto x: obj.circles_)
+            if (intersects(x.second))
+                return true;
+
+        return false;
+    }
+
     void GameObject::update(Scene&, sf::RenderWindow&, sf::Time&)
     {
         std::cout << "Base update" << std::endl;

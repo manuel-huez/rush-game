@@ -23,6 +23,7 @@ namespace Objects
         if (ma.get(x, y) != 0)
         {
           E::Object o(sf::RectangleShape({tileSize, tileSize}));
+          bool collision = false;
           switch (ma.get(x, y))
           {
             case 1:
@@ -36,6 +37,7 @@ namespace Objects
             default:
               o.rectangle_shape_get().setFillColor(
                   E::Color::Dark());
+              collision = true;
               break;
           }
 
@@ -43,7 +45,7 @@ namespace Objects
               y * tileSize});
           std::string name = "0" + std::to_string(x
               + ma.size_get() * y);
-          object_add(name, o);
+          object_add(name, o, collision);
         }
       }
     }
