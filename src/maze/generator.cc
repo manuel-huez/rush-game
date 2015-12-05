@@ -33,7 +33,7 @@ namespace RMaze
 
   void Generator::generate_rooms(int stretch, float density)
   {
-    std::vector<Room> rooms;
+    std::vector<Room>& rooms = maze_.get_rooms();
     while (true)
     {
       stretch = stretch;
@@ -50,7 +50,6 @@ namespace RMaze
           break;
       }
     }
-    rooms_ = rooms;
   }
 
   void Generator::fill_room(Room& room)
@@ -68,14 +67,15 @@ namespace RMaze
     int distance = 10000;
     int x = room.x_get();
     int y = room.y_get();
-    for (unsigned i = 0; i < rooms_.size(); i++)
+    for (unsigned i = 0; i < maze_.get_rooms().size(); i++)
     {
-      if (rooms_.at(i).x_get() != x && rooms_.at(i).y_get() != y)
+      if (maze_.get_rooms().at(i).x_get() != x
+          && maze_.get_rooms().at(i).y_get() != y)
       {
-        int d = std::sqrt(std::pow(rooms_.at(i).x_get() - x, 2)
-            + pow(rooms_.at(i).y_get() - y, 2));
+        int d = std::sqrt(std::pow(maze_.get_rooms().at(i).x_get() - x, 2)
+            + pow(maze_.get_rooms().at(i).y_get() - y, 2));
 
-        if (d < distance && rooms_.at(i).linked == false)
+        if (d < distance && maze_.get_rooms().at(i).linked == false)
         {
           distance = d;
           closest = i;
@@ -177,10 +177,10 @@ namespace RMaze
 
   void Generator::link()
   {
-    Room room = rooms_.at(rand() % rooms_.size());
-    for (unsigned i = 0; i < rooms_.size(); i++)
+    Room room = maze_.get_rooms().at(rand() % maze_.get_rooms().size());
+    for (unsigned i = 0; i < maze_.get_rooms().size(); i++)
     {
-      Room& closest = rooms_.at(find_closest_notlinked(room));
+      Room& closest = maze_.get_rooms().at(find_closest_notlinked(room));
       closest.linked = true;
       link_rooms(room, closest);
       room = closest;

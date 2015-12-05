@@ -23,7 +23,12 @@ namespace RMaze
   {
     return size_;
   }
- 
+
+  std::vector<Room>& Maze::get_rooms()
+  {
+    return rooms_;
+  }
+
   void Maze::set(int x, int y, int type)
   {
     unsigned xx = x;
