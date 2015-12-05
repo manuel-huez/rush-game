@@ -91,6 +91,13 @@ namespace RMaze
     return closest;
   }
 
+  int Generator::get_floor(int x, int y) const
+  {
+    if (maze_.get(x, y) == 2)
+      return 2;
+    return 1;
+  }
+
   void Generator::link_rooms(Room& a, Room& b)
   {
     int ax = a.x_get();
@@ -109,16 +116,16 @@ namespace RMaze
         while (ay1 < by1)
         {
           ay1++;
-          maze_.set(ax1, ay1, 1);
-          maze_.set(ax1 + 1, ay1, 1);
-          maze_.set(ax1 - 1, ay1, 1);
+          maze_.set(ax1, ay1, get_floor(ax1, ay1));
+          maze_.set(ax1 + 1, ay1, get_floor(ax1 + 1, ay1));
+          maze_.set(ax1 - 1, ay1, get_floor(ax1 - 1, ay1));
         }
         while (ax1 < bx1)
         {
           ax1++;
-          maze_.set(ax1, ay1, 1);
-          maze_.set(ax1, ay1 + 1, 1);
-          maze_.set(ax1, ay1 - 1, 1);
+          maze_.set(ax1, ay1, get_floor(ax1, ay1));
+          maze_.set(ax1, ay1 + 1, get_floor(ax1, ay1 + 1));
+          maze_.set(ax1, ay1 - 1, get_floor(ax1, ay1 - 1));
         }
       }
       else
@@ -126,16 +133,16 @@ namespace RMaze
         while (ay1 > by1)
         {
           ay1--;
-          maze_.set(ax1, ay1, 1);
-          maze_.set(ax1 + 1, ay1, 1);
-          maze_.set(ax1 - 1, ay1, 1);
+          maze_.set(ax1, ay1, get_floor(ax1, ay1));
+          maze_.set(ax1 + 1, ay1, get_floor(ax1 + 1, ay1));
+          maze_.set(ax1 - 1, ay1, get_floor(ax1 - 1, ay1));
         }
         while (ax1 < bx1)
         {
           ax1++;
-          maze_.set(ax1, ay1, 1);
-          maze_.set(ax1, ay1 + 1, 1);
-          maze_.set(ax1, ay1 - 1, 1);
+          maze_.set(ax1, ay1, get_floor(ax1, ay1));
+          maze_.set(ax1, ay1 + 1, get_floor(ax1, ay1 + 1));
+          maze_.set(ax1, ay1 - 1, get_floor(ax1, ay1 - 1));
         }
 
       }
@@ -147,16 +154,16 @@ namespace RMaze
         while (ay1 < by1)
         {
           ay1++;
-          maze_.set(ax1, ay1, 1);
-          maze_.set(ax1 + 1, ay1, 1);
-          maze_.set(ax1 - 1, ay1, 1);
+          maze_.set(ax1, ay1, get_floor(ax1, ay1));
+          maze_.set(ax1 + 1, ay1, get_floor(ax1 + 1, ay1));
+          maze_.set(ax1 - 1, ay1, get_floor(ax1 - 1, ay1));
         }
         while (ax1 > bx1)
         {
           ax1--;
-          maze_.set(ax1, ay1, 1);
-          maze_.set(ax1, ay1 + 1, 1);
-          maze_.set(ax1, ay1 + 1, 1);
+          maze_.set(ax1, ay1, get_floor(ax1, ay1));
+          maze_.set(ax1, ay1 + 1, get_floor(ax1, ay1 + 1));
+          maze_.set(ax1, ay1 + 1, get_floor(ax1, ay1 - 1));
         }
       }
       else
@@ -164,16 +171,16 @@ namespace RMaze
         while (ay1 > by1)
         {
           ay1--;
-          maze_.set(ax1, ay1, 1);
-          maze_.set(ax1 + 1, ay1, 1);
-          maze_.set(ax1 - 1, ay1, 1);
+          maze_.set(ax1, ay1, get_floor(ax1, ay1));
+          maze_.set(ax1 + 1, ay1, get_floor(ax1 + 1, ay1));
+          maze_.set(ax1 - 1, ay1, get_floor(ax1 - 1, ay1));
         }
         while (ax1 > bx1)
         {
           ax1--;
-          maze_.set(ax1, ay1, 1);
-          maze_.set(ax1, ay1 + 1, 1);
-          maze_.set(ax1, ay1 - 1, 1);
+          maze_.set(ax1, ay1, get_floor(ax1, ay1));
+          maze_.set(ax1, ay1 + 1, get_floor(ax1, ay1 + 1));
+          maze_.set(ax1, ay1 - 1, get_floor(ax1, ay1 - 1));
         }
 
       }
