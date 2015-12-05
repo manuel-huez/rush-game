@@ -25,4 +25,9 @@ namespace RMaze
   {
     return posY_;
   }
+
+  bool operator==(const Room& room, const Room& room2) 
+  {
+    return room2.x_get() == room.x_get() && room2.y_get() == room.y_get();
+  }
 }
