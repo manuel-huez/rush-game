@@ -25,6 +25,8 @@ namespace E
         void rectangle_add(std::string key, sf::RectangleShape r);
         sf::RectangleShape& rectangle_get(std::string key);
 
+        virtual bool intersects(sf::CircleShape& c);
+
         virtual void update(Scene& scene, sf::RenderWindow& window,
                 sf::Time& dt);
         virtual void draw(sf::RenderWindow& window);

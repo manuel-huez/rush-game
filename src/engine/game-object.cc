@@ -3,6 +3,7 @@
 #include "object.hh"
 #include <map>
 #include <string>
+#include <cmath>
 #include <SFML/Graphics.hpp>
 
 namespace E
@@ -33,7 +34,7 @@ namespace E
         circles_[key] = c;
     }
 
-    sf::CircleShape& GameObject::circle_get(std::string)
+    sf::CircleShape& GameObject::circle_get(std::string key)
     {
         return circles_[key];
     }
@@ -46,6 +47,24 @@ namespace E
     sf::RectangleShape& GameObject::rectangle_get(std::string key)
     {
         return rectangles_[key];
+    }
+
+    bool GameObject::intersects(sf::CircleShape& c)
+    {
+        float xa = c.getPosition().x + c.getRadius() / 2;
+        float ya = c.getPosition().y + c.getRadius() / 2;
+        for (auto x: circles_)
+        {
+            auto c2 = x.second;
+            float xb = c2.getPosition().x + c2.getRadius() / 2;
+            float yb = c2.getPosition().y + c2.getRadius() / 2;
+
+            float d = sqrt(pow(xa - xb, 2) + pow(ya - yb, 2));
+            if (d < c.getRadius() + c2.getRadius())
+                return true;
+        }
+
+        return false;
     }
 
     void GameObject::update(Scene&, sf::RenderWindow&, sf::Time&)
