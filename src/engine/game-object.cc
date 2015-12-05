@@ -36,7 +36,7 @@ namespace E
                 {
                     auto rect = obj.rectangle_shape_get();
                     float r = (rect.getSize().x + rect.getSize().y) / 2;
-                    sf::CircleShape s(r);
+                    sf::CircleShape s(r / 2);
                     s.setPosition(rect.getPosition());
                     circle_add(key, s);
                     break;
