@@ -40,7 +40,7 @@ namespace PATH
     }
     else
     {
-      int altG = dist_[x] + map_[n];
+      int altG = dist_[x] + map_[n] + rand() % 5;
       if (altG < dist_[n])
       {
         dist_[n] = altG;
