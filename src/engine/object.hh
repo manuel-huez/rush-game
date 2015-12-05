@@ -27,6 +27,7 @@ namespace E
         sf::Text& text_get();
 
         void position_set(sf::Vector2f pos);
+        void radius_set(float r);
 
         void draw(sf::RenderWindow& window);
 

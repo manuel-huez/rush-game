@@ -49,7 +49,7 @@ namespace E
     Object& GameObject::object_get(std::string key)
     {
         if (objects_.find(key) == objects_.end())
-            throw std::logic_error("Key not found: " + key);
+            throw std::logic_error("Key not found for object (get): " + key);
 
         return objects_[key];
     }
@@ -57,7 +57,7 @@ namespace E
     void GameObject::object_set(std::string key, Object obj)
     {
         if (objects_.find(key) == objects_.end())
-            throw std::logic_error("Key not found: " + key);
+            throw std::logic_error("Key not found for object (set): " + key);
 
         objects_[key] = obj;
     }
@@ -70,7 +70,7 @@ namespace E
     sf::CircleShape& GameObject::circle_get(std::string key)
     {
         if (circles_.find(key) == circles_.end())
-            throw std::logic_error("Key not found: " + key);
+            throw std::logic_error("Key not found for circle (get): " + key);
 
         return circles_[key];
     }
@@ -78,20 +78,24 @@ namespace E
     void GameObject::circle_set(std::string key, sf::CircleShape c)
     {
         if (circles_.find(key) == circles_.end())
-            throw std::logic_error("Key not found: " + key);
+            throw std::logic_error("Key not found for circle (set): " + key);
 
         circles_[key] = c;
     }
 
     bool GameObject::intersects(sf::CircleShape& c)
     {
-        float xa = c.getPosition().x + c.getRadius() / 2;
-        float ya = c.getPosition().y + c.getRadius() / 2;
+        float xa = c.getPosition().x + (c.getRadius()
+            + c.getOutlineThickness()) / 2;
+        float ya = c.getPosition().y + (c.getRadius()
+            + c.getOutlineThickness()) / 2;
         for (auto x: circles_)
         {
             auto c2 = x.second;
-            float xb = c2.getPosition().x + c2.getRadius() / 2;
-            float yb = c2.getPosition().y + c2.getRadius() / 2;
+            float xb = c2.getPosition().x + (c2.getRadius()
+                + c2.getOutlineThickness()) / 2;
+            float yb = c2.getPosition().y + (c2.getRadius()
+                + c2.getOutlineThickness()) / 2;
 
             float d = sqrt(pow(xa - xb, 2) + pow(ya - yb, 2));
             if (d < c.getRadius() + c2.getRadius())
