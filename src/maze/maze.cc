@@ -26,6 +26,9 @@ namespace RMaze
   
   void Maze::set(int x, int y, int type)
   {
+    unsigned xx = x;
+    unsigned yy = y;
+    if (x > 0 && xx < size_ - 1 && y > 0 && yy < size_ - 1)
     map_.at(x + size_ * y) = type;
   }
 
@@ -40,7 +43,7 @@ namespace RMaze
     {
       for (unsigned x = 0; x < size; x++)
       {
-        str << " " << (ma.map_get().at(x + size * y) ? "O" : ".");
+        str << " " << (ma.map_get().at(x + size * y) ? "." : "O");
       }
       std::cout << std::endl;
     }
