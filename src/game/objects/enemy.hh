@@ -25,7 +25,7 @@ namespace Char
       void set_posY(float y);
       float get_posY() const;
       float get_posX() const;
-    private:
+    protected:
       float posX_;
       float posY_;
       int level_;
