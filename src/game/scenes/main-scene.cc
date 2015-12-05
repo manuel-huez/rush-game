@@ -34,6 +34,10 @@ namespace Scenes
         Scene::handle_events(engine, window, dt);
 
         (*player_).position_set(sf::Vector2f(sf::Mouse::getPosition(window)));
+        if ((*player_).intersects(*maze_))
+            std::cout << "Collides" << std::endl;
+        else
+            std::cout << "Doesnt collide" << std::endl;
     }
 
     void MainScene::update(E::Engine& engine,
