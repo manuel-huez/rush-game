@@ -1,5 +1,4 @@
 #include "menu-scene.hh"
-#include "../../engine/engine.hh"
 #include "../../engine/color.hh"
 #include "../../engine/font.hh"
 #include "../../engine/scene.hh"
@@ -9,8 +8,8 @@
 
 namespace Scenes
 {
-    MenuScene::MenuScene(E::Engine& engine, sf::RenderWindow& window)
-        : Scene::Scene(engine, window)
+    MenuScene::MenuScene(sf::RenderWindow& window)
+        : Scene::Scene(window)
     {
         E::Object bg(sf::RectangleShape(sf::Vector2f(window.getSize())));
         bg.rectangle_shape_get().setFillColor(E::Color::Dark());
@@ -32,10 +31,9 @@ namespace Scenes
         cur_menu_ = CurrentMenuE::Play;
     }
 
-    void MenuScene::handle_events(E::Engine& engine,
-            sf::RenderWindow& window, sf::Time& dt)
+    void MenuScene::handle_events(sf::RenderWindow& window, sf::Time& dt)
     {
-        Scene::handle_events(engine, window, dt);
+        Scene::handle_events(window, dt);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
@@ -55,15 +53,14 @@ namespace Scenes
                 window.close();
             else
             {
-                auto s = std::make_shared<Scenes::MainScene>(engine, window);
-                engine.scene_set(std::static_pointer_cast<E::Scene>(s));
+                //auto s = std::make_shared<Scenes::MainScene>(window);
+                //engine.scene_set(std::static_pointer_cast<E::Scene>(s));
             }
         }
     }
 
-    void MenuScene::update(E::Engine& engine,
-            sf::RenderWindow& window, sf::Time& dt)
+    void MenuScene::update(sf::RenderWindow& window, sf::Time& dt)
     {
-        Scene::update(engine, window, dt);
+        Scene::update(window, dt);
     }
 }

@@ -34,8 +34,8 @@ namespace E
     {
         sf::Time dt = clock_.restart();
 
-        scene_get().handle_events(window_get(), dt);
-        scene_get().update(window_get(), dt);
+        scene_get().handle_events(*this, window_get(), dt);
+        scene_get().update(*this, window_get(), dt);
 
         window_.clear();
         scene_get().draw(window_get());

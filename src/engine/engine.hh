@@ -8,6 +8,7 @@
 namespace E
 {
 
+    class Scene;
     class Engine
     {
     public:
