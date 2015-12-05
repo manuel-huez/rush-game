@@ -28,7 +28,33 @@ namespace Scenes
     auto ma = maze_->get_maze();
     auto roomP  = ma.get_rooms().at(rand() % ma.get_rooms().size());
 
-    for (int i = 0; i < 20; i++)
+    add_enemies(window, roomP);
+
+    sf::Vector2f s(roomP.x_get(), roomP.y_get());
+    player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
+
+    gobject_add("2player", std::static_pointer_cast<E::GameObject>(player_));
+  }
+
+  void MainScene::handle_events(E::Engine& engine,
+      sf::RenderWindow& window, sf::Time& dt)
+  {
+    Scene::handle_events(engine, window, dt);
+
+    (*player_).position_set(sf::Vector2f(sf::Mouse::getPosition(window)));
+  }
+
+  void MainScene::update(E::Engine& engine,
+      sf::RenderWindow& window, sf::Time& dt)
+  {
+    Scene::update(engine, window, dt);
+  }
+
+  void MainScene::add_enemies(sf::RenderWindow& window,
+      RMaze::Room& roomP)
+  {
+    auto ma = maze_->get_maze();
+    for (int i = 0; i < 13; i++)
     {
       int size = ma.size_get();
 
@@ -54,25 +80,6 @@ namespace Scenes
 
       gobject_add("2Enemy" + i, std::static_pointer_cast<E::GameObject>(anmy));
     }
-
-    sf::Vector2f s(roomP.x_get(), roomP.y_get());
-    player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
-
-    gobject_add("2player", std::static_pointer_cast<E::GameObject>(player_));
-  }
-
-  void MainScene::handle_events(E::Engine& engine,
-      sf::RenderWindow& window, sf::Time& dt)
-  {
-    Scene::handle_events(engine, window, dt);
-
-    (*player_).position_set(sf::Vector2f(sf::Mouse::getPosition(window)));
-  }
-
-  void MainScene::update(E::Engine& engine,
-      sf::RenderWindow& window, sf::Time& dt)
-  {
-    Scene::update(engine, window, dt);
   }
 
 }
