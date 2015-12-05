@@ -20,6 +20,8 @@ namespace E
         Object(sf::RectangleShape rectangle);
         Object(sf::Text text);
 
+        ObjectE type_get() const;
+
         sf::CircleShape& circle_shape_get();
         sf::RectangleShape& rectangle_shape_get();
         sf::Text& text_get();

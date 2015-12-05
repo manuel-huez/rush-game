@@ -19,9 +19,30 @@ namespace E
     GameObject::~GameObject()
     {}
 
-    void GameObject::object_add(std::string key, Object obj)
+    void GameObject::object_add(std::string key, Object obj, bool collision)
     {
         objects_[key] = obj;
+
+        if (!collision)
+            return;
+
+        switch (obj.type_get())
+        {
+            case ObjectE::CIRCLE:
+                circle_add(key, obj.circle_shape_get());
+                break;
+            case ObjectE::RECTANGLE:
+                {
+                    auto rect = obj.rectangle_shape_get();
+                    float r = (rect.getSize().x + rect.getSize().y) / 2;
+                    sf::CircleShape s(r);
+                    s.setPosition(rect.getPosition());
+                    circle_add(key, s);
+                    break;
+                }
+            default:
+                break;
+        }
     }
 
     Object& GameObject::object_get(std::string key)

@@ -17,7 +17,7 @@ namespace E
         GameObject();
         ~GameObject();
 
-        void object_add(std::string key, Object obj);
+        void object_add(std::string key, Object obj, bool collision = true);
         Object& object_get(std::string key);
 
         void circle_add(std::string key, sf::CircleShape c);
