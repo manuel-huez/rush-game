@@ -2,35 +2,45 @@
 #include "../../engine/scene.hh"
 #include "../../engine/object.hh"
 #include "../../engine/color.hh"
+#include "../../maze/maze.hh"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <string>
+
 
 namespace Scenes
 {
 
-    MainScene::MainScene(sf::RenderWindow& window)
-        : Scene::Scene(window)
+  MainScene::MainScene(sf::RenderWindow& window)
+    : Scene::Scene(window)
+  {
+    E::Object bg(sf::RectangleShape(sf::Vector2f(window.getSize())));
+    bg.rectangle_shape_get().setFillColor(E::Color::Dark());
+    object_add("0background", bg);
+
+    int mazeSize = 50;
+    float tileSize = window.getSize().x / mazeSize;
+    RMaze::Maze ma(mazeSize);
+    ma.create();
+    for (unsigned x = 0; x < ma.size_get(); x++)
     {
-        E::Object bg(sf::RectangleShape(sf::Vector2f(window.getSize())));
-        bg.rectangle_shape_get().setFillColor(E::Color::Dark());
-        object_add("background", bg);
-
-        E::Object o(sf::CircleShape(100));
-        o.circle_shape_get().setFillColor(E::Color::Orange());
-        object_add("circle", o);
-
-        E::Object o2(sf::RectangleShape({120, 50}));
-        o2.rectangle_shape_get().setFillColor(E::Color::Orange());
-        object_add("rectangle", o2);
+      for (unsigned y = 0; y < ma.size_get(); y++)
+      {
+        if (ma.get(x, y) != 0)
+        {
+          E::Object o2(sf::RectangleShape({tileSize, tileSize}));
+          o2.rectangle_shape_get().setFillColor(E::Color::Orange());
+          o2.rectangle_shape_get().setPosition({x * tileSize, y * tileSize});
+          std::string name = "1" + std::to_string(x + ma.size_get() * y);
+          object_add(name, o2);
+        }
+      }
     }
+  }
 
-    void MainScene::update(sf::RenderWindow& window, sf::Time& dt)
-    {
-        Scene::update(window, dt);
-
-        object_get("circle").circle_shape_get().setPosition({10, 10});
-
-        std::cout << "Update" << std::endl;
-    }
+  void MainScene::update(sf::RenderWindow& window, sf::Time& dt)
+  {
+    Scene::update(window, dt);
+  }
 
 }

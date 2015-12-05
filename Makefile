@@ -12,7 +12,7 @@ CXXSRC = src/game.cc \
 				 src/maze/maze.cc \
 				 src/maze/generator.cc \
 				 src/maze/room.cc
-CXXOBJ = $(CXXSRC_G:.cc=.o)
+CXXOBJ = $(CXXSRC:.cc=.o)
 CXXBIN = ./lab
 
 all: game
