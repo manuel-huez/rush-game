@@ -7,6 +7,7 @@ CXXSRC_G = src/game.cc \
 		 src/engine/scene.cc \
 		 src/engine/object.cc \
 		 src/engine/color.cc \
+		 src/engine/font.cc \
 		 src/game/scenes/main-scene.cc \
 		 src/game/scenes/menu-scene.cc
 CXXSRC_M= src/maze/main.cc \
