@@ -99,7 +99,7 @@ namespace E
 
     void GameObject::update(Scene&, sf::RenderWindow&, sf::Time&)
     {
-        std::cout << "Base update" << std::endl;
+        //
     }
 
     void GameObject::draw(sf::RenderWindow& window)
