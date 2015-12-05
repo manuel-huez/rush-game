@@ -26,6 +26,7 @@ namespace E
         void circle_set(std::string key, sf::CircleShape c);
 
         virtual bool intersects(sf::CircleShape& c);
+        virtual bool intersects(GameObject& o);
 
         virtual void update(Scene& scene, sf::RenderWindow& window,
                 sf::Time& dt);

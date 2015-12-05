@@ -28,7 +28,8 @@ all: game
 bin: $(CXXOBJ)
 	$(CXX) $(CXXFLAGS) $(LDLIBS) $^ -o $(CXXBIN)
 
-game: bin
+game:
+	$(MAKE) -Bj bin
 	$(CXXBIN)
 
 clean:
