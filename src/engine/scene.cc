@@ -31,7 +31,7 @@ namespace E
         return objects_.at(key);
     }
 
-    void Scene::update(sf::RenderWindow& window)
+    void Scene::update(sf::RenderWindow& window, sf::Time&)
     {
         event_handler_.handle(window);
     }

@@ -26,6 +26,7 @@ namespace E
         const unsigned height_;
         sf::RenderWindow& window_;
         std::shared_ptr<Scene> scene_;
+        sf::Clock clock_;
     };
 
 }

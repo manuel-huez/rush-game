@@ -13,8 +13,8 @@ namespace E
         , height_{height}
         , window_{window}
         , scene_{nullptr}
-    {
-    }
+        , clock_{sf::Clock()}
+    {}
 
     sf::RenderWindow& Engine::window_get() const
     {
@@ -38,13 +38,12 @@ namespace E
 
     void Engine::run()
     {
-        while (window_.isOpen())
-        {
-            scene_get().update(window_get());
+        sf::Time dt = clock_.restart();
 
-            window_.clear();
-            scene_get().draw(window_get());
-            window_.display();
-        }
+        scene_get().update(window_get(), dt);
+
+        window_.clear();
+        scene_get().draw(window_get());
+        window_.display();
     }
 }
