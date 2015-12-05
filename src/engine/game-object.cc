@@ -6,6 +6,7 @@
 #include <cmath>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <stdexcept>
 
 namespace E
 {
@@ -47,11 +48,17 @@ namespace E
 
     Object& GameObject::object_get(std::string key)
     {
+        if (objects_.find(key) == objects_.end())
+            throw std::logic_error("Key not found: " + key);
+
         return objects_[key];
     }
 
     void GameObject::object_set(std::string key, Object obj)
     {
+        if (objects_.find(key) == objects_.end())
+            throw std::logic_error("Key not found: " + key);
+
         objects_[key] = obj;
     }
 
@@ -62,11 +69,17 @@ namespace E
 
     sf::CircleShape& GameObject::circle_get(std::string key)
     {
+        if (circles_.find(key) == circles_.end())
+            throw std::logic_error("Key not found: " + key);
+
         return circles_[key];
     }
 
     void GameObject::circle_set(std::string key, sf::CircleShape c)
     {
+        if (circles_.find(key) == circles_.end())
+            throw std::logic_error("Key not found: " + key);
+
         circles_[key] = c;
     }
 
