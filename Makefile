@@ -15,7 +15,7 @@ CXXSRC_M= src/maze/main.cc \
 					src/maze/room.cc
 CXXOBJ_G = $(CXXSRC_G:.cc=.o)
 CXXOBJ_M= $(CXXSRC_M:.cc=.o)
-CXXBIN = ./game
+CXXBIN = ./lab
 
 all: game
 
