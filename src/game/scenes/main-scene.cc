@@ -29,7 +29,21 @@ namespace Scenes
         if (ma.get(x, y) != 0)
         {
           E::Object o2(sf::RectangleShape({tileSize, tileSize}));
-          o2.rectangle_shape_get().setFillColor(E::Color::Orange());
+          switch (ma.get(x, y))
+          {
+            case 1:
+              o2.rectangle_shape_get().setFillColor(E::Color::Grey());
+              break;
+            case 2:
+              o2.rectangle_shape_get().setFillColor(E::Color::White());
+              break;
+            case 3:
+              o2.rectangle_shape_get().setFillColor(E::Color::White());
+              break;
+            default:
+              o2.rectangle_shape_get().setFillColor(E::Color::Grey());
+              break;
+          }
           o2.rectangle_shape_get().setPosition({x * tileSize, y * tileSize});
           std::string name = "1" + std::to_string(x + ma.size_get() * y);
           object_add(name, o2);

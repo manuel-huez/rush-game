@@ -6,7 +6,7 @@ namespace RMaze
   void Maze::create()
   {
     Generator gen(*this);
-    gen.generate_rooms(5, 0.4f);
+    gen.generate_rooms(4, 0.4f);
     gen.link();
   }
 
@@ -23,7 +23,7 @@ namespace RMaze
   {
     return size_;
   }
-  
+ 
   void Maze::set(int x, int y, int type)
   {
     unsigned xx = x;
