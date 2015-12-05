@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -fPIC -Wall -Wextra -Werror -pedantic -std=c++14 -g
+CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++14 -g
 LDLIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
 CXXSRC = src/game.cc \
@@ -14,6 +14,7 @@ CXXSRC = src/game.cc \
 				 src/game/objects/background.cc \
 				 src/game/objects/maze.cc \
 				 src/game/objects/menu.cc \
+				 src/game/objects/player.cc \
 				 src/maze/maze.cc \
 				 src/maze/generator.cc \
 				 src/maze/room.cc	\

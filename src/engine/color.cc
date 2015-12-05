@@ -15,6 +15,18 @@ namespace E
         return c;
     }
 
+    sf::Color& Color::Blue()
+    {
+        static sf::Color c(41, 128, 185);
+        return c;
+    }
+
+    sf::Color& Color::LightBlue()
+    {
+        static sf::Color c(52, 152, 219);
+        return c;
+    }
+
     sf::Color& Color::Dark()
     {
         static sf::Color c(44, 62, 80);
