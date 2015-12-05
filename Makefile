@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -fPIC -Wall -Wextra -Werror -pedantic -std=c++14 -g
+CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++14 -g
 LDLIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
 CXXSRC = src/game.cc \
