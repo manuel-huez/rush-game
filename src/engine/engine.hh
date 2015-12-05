@@ -17,7 +17,6 @@ namespace E
         sf::RenderWindow& window_get() const;
         void scene_set(std::shared_ptr<Scene> scene);
         Scene& scene_get();
-        EventHandler& event_handler_get();
 
         void draw() const;
         void run();
