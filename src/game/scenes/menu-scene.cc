@@ -15,11 +15,11 @@ namespace Scenes
     MenuScene::MenuScene(E::Engine& engine, sf::RenderWindow& window)
         : Scene::Scene(engine, window)
     {
-        E::GameObject bg = Objects::Background(*this, window);
-        gobject_add("0background", bg);
+        auto bg = std::make_shared<Objects::Background>(*this, window);
+        gobject_add("0background", std::static_pointer_cast<E::GameObject>(bg));
 
-        E::GameObject menu = Objects::Menu(*this, window);
-        gobject_add("1menu", menu);
+        auto menu = std::make_shared<Objects::Menu>(*this, window);
+        gobject_add("1menu", std::static_pointer_cast<E::GameObject>(menu));
 
         cur_menu_ = CurrentMenuE::Play;
     }
