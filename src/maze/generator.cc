@@ -17,7 +17,7 @@ namespace RMaze
         if (x < 0 || xx >= maze_.size_get()
             || y < 0 || yy >= maze_.size_get())
           continue;
-        if (maze_.get(x, y) != 0)
+        if (maze_.get(x, y) != 100)
           return false;
       }
     }
@@ -26,8 +26,14 @@ namespace RMaze
 
   float Generator::calculate_density(Room& room) const
   {
-    int surface = room.width_get() * room.height_get();
-    maze_.density += surface;
+    for (int x = room.x_get(); x < room.x_get() + room.width_get(); x++)
+    {
+      for (int y = room.y_get(); y < room.y_get() + room.height_get(); y++)
+      {
+        if (maze_.get(x, y) == 2)
+          maze_.density++;
+      }
+    }
     return maze_.density / (maze_.size_get() * maze_.size_get());
   }
 
@@ -37,11 +43,11 @@ namespace RMaze
     while (true)
     {
       stretch = stretch;
-      int width = rand() % (stretch * 2) + (stretch * maze_.size_get() / 50);
-      int height = rand() % (stretch * 2) + (stretch * maze_.size_get() / 50);
+      int width = rand() % (stretch + stretch / 2) + (stretch - stretch / 2);
+      int height = rand() % (stretch + stretch / 2) + (stretch - stretch / 2);
       int x = rand() % (maze_.size_get() - width - 2) + 2;
       int y = rand() % (maze_.size_get() - height - 2) + 2;
-      Room room(width, height, x, y, rand() % 2  + 2);
+      Room room(width, height, x, y, 2);
       if (is_place_available(room))
       {
         rooms.push_back(room);
