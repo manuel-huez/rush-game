@@ -3,6 +3,7 @@
 #include "../../engine/object.hh"
 #include "../../engine/color.hh"
 #include "../../maze/maze.hh"
+#include "../../maze/world.hh"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
@@ -18,10 +19,11 @@ namespace Scenes
     bg.rectangle_shape_get().setFillColor(E::Color::Dark());
     object_add("0background", bg);
 
+    RMaze::World world(50, 4, 0.4f);
     int mazeSize = 50;
+    RMaze::Maze& ma = world.get_maze();
     float tileSize = window.getSize().x / mazeSize;
-    RMaze::Maze ma(mazeSize);
-    ma.create();
+
     for (unsigned x = 0; x < ma.size_get(); x++)
     {
       for (unsigned y = 0; y < ma.size_get(); y++)

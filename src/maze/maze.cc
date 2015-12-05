@@ -3,10 +3,10 @@
 
 namespace RMaze
 {
-  void Maze::create()
+  void Maze::create(int stretch, float density)
   {
     Generator gen(*this);
-    gen.generate_rooms(4, 0.4f);
+    gen.generate_rooms(stretch, density);
     gen.link();
   }
 
