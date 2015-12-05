@@ -52,7 +52,7 @@ namespace RMaze
       {
         rooms.push_back(room);
         fill_room(room);
-        if (calculate_density(room) > density)
+        if (maze_.get_rooms().size() > 1 && calculate_density(room) > density)
           break;
       }
     }
