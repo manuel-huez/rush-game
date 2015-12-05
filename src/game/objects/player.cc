@@ -8,15 +8,17 @@
 
 namespace Objects
 {
-    Player::Player(E::Scene& scene, sf::RenderWindow& window, float size)
+    Player::Player(E::Scene& scene, sf::RenderWindow& window, float size,
+            sf::Vector2f pos)
         : GameObject(scene, window)
     {
         size_ = size;
-        pos_ = {0, 0};
+        pos_  = pos;
 
-        E::Object r(sf::RectangleShape({size, size}));
-        r.rectangle_shape_get().setFillColor(E::Color::Blue());
-        object_add("0cursor", r, true);
+        auto s = E::Object(sf::CircleShape(size));
+        s.circle_shape_get().setFillColor(E::Color::Blue());
+        s.circle_shape_get().setPosition(pos);
+        object_add("0cursor", s, true);
     }
 
     void Player::update(E::Scene& scene,
@@ -24,11 +26,14 @@ namespace Objects
     {
         GameObject::update(scene, window, dt);
 
-        auto c = circle_get("0cursor");
-        c.setPosition(position_get());
+        auto pos = position_get();
+        pos.x   -= size_;
+        pos.y   -= size_;
+        auto c   = circle_get("0cursor");
+        c.setPosition(pos);
         circle_set("0cursor", c);
         auto c2 = object_get("0cursor");
-        c2.position_set(position_get());
+        c2.position_set(pos);
         object_set("0cursor", c2);
     }
 
