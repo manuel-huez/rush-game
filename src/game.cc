@@ -1,8 +1,9 @@
 #include "engine/engine.hh"
-#include "engine/object.hh"
-#include "engine/color.hh"
+#include "engine/scene.hh"
+#include "game/scenes/main-scene.hh"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <memory>
 
 int main()
 {
@@ -12,12 +13,11 @@ int main()
             sf::Style::Default, settings);
     E::Engine engine(200, 200, window);
 
-    E::Object o(sf::CircleShape(100));
-    o.circle_shape_get().setFillColor(E::Color::Orange());
+    auto s = std::make_shared<Scenes::MainScene>();
+    engine.scene_set(std::static_pointer_cast<E::Scene>(s));
 
-    engine.scene_get().object_add("circle", o);
-
-    engine.run();
+    while (window.isOpen())
+        engine.run();
 
     return 0;
 }
