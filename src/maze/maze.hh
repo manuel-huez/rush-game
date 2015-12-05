@@ -9,7 +9,7 @@ namespace RMaze
   class Maze
   {
     public:
-      Maze(unsigned size)
+      Maze(const unsigned size)
         : size_(size)
       {
         map_ = std::vector<int>(size_ * size_);
@@ -20,8 +20,9 @@ namespace RMaze
       void set(int x, int y, int type);
       int get(int x, int y) const;
       unsigned size_get() const;
+      float density;
     private:
-      unsigned size_;
+      const unsigned size_;
       std::vector<int> map_;
   };
 

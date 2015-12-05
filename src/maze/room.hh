@@ -14,12 +14,15 @@ namespace RMaze
         , posX_(x)
         , posY_(y)
         , type_(type)
-      {}
+      {
+        linked = false;
+      }
       int width_get() const;
       int height_get() const;
       int type_get() const;
       int x_get() const;
       int y_get() const;
+      bool linked;
     private:
       int width_;
       int height_;
