@@ -41,7 +41,7 @@ namespace RMaze
       int height = rand() % (stretch * 2) + (stretch * maze_.size_get() / 50);
       int x = rand() % (maze_.size_get() - width - 2) + 2;
       int y = rand() % (maze_.size_get() - height - 2) + 2;
-      Room room(width, height, x, y, 1);
+      Room room(width, height, x, y, rand() % 2  + 2);
       if (is_place_available(room))
       {
         rooms.push_back(room);
