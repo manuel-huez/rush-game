@@ -2,6 +2,7 @@
 #include "../objects/background.hh"
 #include "../objects/maze.hh"
 #include "../objects/enemy.hh"
+#include "../objects/sentinel.hh"
 #include "../objects/player.hh"
 #include "../../engine/scene.hh"
 #include "../../engine/engine.hh"
@@ -29,6 +30,7 @@ namespace Scenes
     auto roomP  = ma.get_rooms().at(rand() % ma.get_rooms().size());
 
     add_enemies(window, roomP);
+    add_sentinels(window, roomP);
 
     sf::Vector2f s(roomP.x_get(), roomP.y_get());
     player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
@@ -79,6 +81,31 @@ namespace Scenes
           (rand() % 8 + 12.f) / 10);
 
       gobject_add("2Enemy" + i, std::static_pointer_cast<E::GameObject>(anmy));
+    }
+  }
+void MainScene::add_sentinels(sf::RenderWindow& window,
+      RMaze::Room& roomP)
+  {
+    auto ma = maze_->get_maze();
+    for (int i = 0; i < 4; i++)
+    {
+      int size = ma.size_get();
+
+      auto room  = ma.get_rooms().at(rand() % ma.get_rooms().size());
+      auto room2 = ma.get_rooms().at(rand() % ma.get_rooms().size());
+      while (room2 == room || room == roomP || room2 == roomP)
+      {
+        room  = ma.get_rooms().at(rand() % ma.get_rooms().size());
+        room2 = ma.get_rooms().at(rand() % ma.get_rooms().size());
+      }
+
+      int x  = room.x_get()  + room.width_get()   / 2;
+      int y  = room.y_get()  + room.height_get()  / 2;
+
+      auto anmy = std::make_shared<EN::Sentinel>(*this, window, x, y, 1,
+          "2Sentinel", maze_->get_tile_size(), size);
+
+      gobject_add("2Sentinel" + i, std::static_pointer_cast<E::GameObject>(anmy));
     }
   }
 

@@ -19,6 +19,7 @@ namespace Scenes
                 sf::RenderWindow& window, sf::Time& dt);
     private:
         void add_enemies(sf::RenderWindow& window, RMaze::Room& roomP);
+        void add_sentinels(sf::RenderWindow& window, RMaze::Room& roomP);
         std::shared_ptr<Objects::Player> player_;
         std::shared_ptr<Objects::MMaze>   maze_;
     };
