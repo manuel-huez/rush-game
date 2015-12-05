@@ -14,7 +14,7 @@ int main()
             sf::Style::Default, settings);
     E::Engine engine(800, 800, window);
 
-    auto s = std::make_shared<Scenes::MainScene>(window);
+    auto s = std::make_shared<Scenes::MenuScene>(engine, window);
     engine.scene_set(std::static_pointer_cast<E::Scene>(s));
 
     while (window.isOpen())

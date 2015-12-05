@@ -1,17 +1,28 @@
 #pragma once
 
 #include "../../engine/scene.hh"
+#include "../../engine/engine.hh"
 #include <SFML/Graphics.hpp>
 
 namespace Scenes
 {
 
+    enum CurrentMenuE {
+        Play,
+        Quit
+    };
+
     class MenuScene : public E::Scene
     {
     public:
-        MenuScene(sf::RenderWindow& window);
+        MenuScene(E::Engine& engine, sf::RenderWindow& window);
 
-        void update(sf::RenderWindow& window, sf::Time& dt);
+        void handle_events(E::Engine& engine,
+                sf::RenderWindow& window, sf::Time& dt);
+        void update(E::Engine& engine,
+                sf::RenderWindow& window, sf::Time& dt);
+    private:
+        CurrentMenuE cur_menu_;
     };
 
 }
