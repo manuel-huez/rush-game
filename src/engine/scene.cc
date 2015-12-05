@@ -1,5 +1,4 @@
 #include "scene.hh"
-#include "event-handler.hh"
 #include "object.hh"
 #include <map>
 #include <string>
@@ -9,17 +8,11 @@ namespace E
 {
 
     Scene::Scene()
-        : event_handler_{EventHandler()}
-        , objects_{std::map<std::string, Object>()}
+        : objects_{std::map<std::string, Object>()}
     {}
 
     Scene::~Scene()
     {}
-
-    EventHandler& Scene::event_handler_get()
-    {
-        return event_handler_;
-    }
 
     void Scene::object_add(std::string key, Object obj)
     {
@@ -31,10 +24,18 @@ namespace E
         return objects_.at(key);
     }
 
-    void Scene::update(sf::RenderWindow& window, sf::Time&)
+    void Scene::handle_events(sf::RenderWindow& window, sf::Time&)
     {
-        event_handler_.handle(window);
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
     }
+
+    void Scene::update(sf::RenderWindow&, sf::Time&)
+    {}
 
     void Scene::draw(sf::RenderWindow& window) const
     {

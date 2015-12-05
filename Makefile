@@ -4,7 +4,6 @@ LDLIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
 CXXSRC_G = src/game.cc \
 		 src/engine/engine.cc \
-		 src/engine/event-handler.cc \
 		 src/engine/scene.cc \
 		 src/engine/object.cc \
 		 src/engine/color.cc \

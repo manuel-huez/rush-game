@@ -31,15 +31,11 @@ namespace E
         return *scene_;
     }
 
-    EventHandler& Engine::event_handler_get()
-    {
-        return scene_get().event_handler_get();
-    }
-
     void Engine::run()
     {
         sf::Time dt = clock_.restart();
 
+        scene_get().handle_events(window_get(), dt);
         scene_get().update(window_get(), dt);
 
         window_.clear();
