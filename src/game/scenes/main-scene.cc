@@ -26,15 +26,19 @@ namespace Scenes
     gobject_add("1maze", std::static_pointer_cast<E::GameObject>(maze_));
 
     auto ma = maze_->get_maze();
+    auto roomP  = ma.get_rooms().at(rand() % ma.get_rooms().size());
+
     for (int i = 0; i < 20; i++)
     {
       int size = ma.size_get();
 
       auto room  = ma.get_rooms().at(rand() % ma.get_rooms().size());
       auto room2 = ma.get_rooms().at(rand() % ma.get_rooms().size());
-      while (room2.x_get() == room.x_get()
-          && room2.y_get() == room.y_get())
+      while (room2 == room || room == roomP || room2 == roomP)
+      {
+        room  = ma.get_rooms().at(rand() % ma.get_rooms().size());
         room2 = ma.get_rooms().at(rand() % ma.get_rooms().size());
+      }
 
       int x  = room.x_get()  + room.width_get()   / 2;
       int y  = room.y_get()  + room.height_get()  / 2;
@@ -51,7 +55,7 @@ namespace Scenes
       gobject_add("2Enemy" + i, std::static_pointer_cast<E::GameObject>(anmy));
     }
 
-    sf::Vector2f s(10, 10);
+    sf::Vector2f s(roomP.x_get(), roomP.y_get());
     player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
 
     gobject_add("2player", std::static_pointer_cast<E::GameObject>(player_));
