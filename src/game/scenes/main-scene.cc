@@ -11,7 +11,6 @@
 #include <string>
 #include <memory>
 
-
 namespace Scenes
 {
 
@@ -36,7 +35,8 @@ namespace Scenes
     }
 
     sf::Vector2f s(10, 10);
-    player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
+    player_ = std::make_shared<Objects::Player>(*this, window,
+            maze_->get_tile_size() / 2, s);
     gobject_add("2player", std::static_pointer_cast<E::GameObject>(player_));
   }
 
@@ -45,7 +45,19 @@ namespace Scenes
   {
     Scene::handle_events(engine, window, dt);
 
-    (*player_).position_set(sf::Vector2f(sf::Mouse::getPosition(window)));
+    auto pos    = (*player_).position_get();
+    float speed = 5 * maze_->get_tile_size();
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+      pos.y -= speed * dt.asSeconds();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+      pos.y += speed * dt.asSeconds();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+      pos.x += speed * dt.asSeconds();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+      pos.x -= speed * dt.asSeconds();
+
+    (*player_).position_set(pos);
     if ((*player_).intersects(*maze_))
       std::cout << "Collides" << std::endl;
     else

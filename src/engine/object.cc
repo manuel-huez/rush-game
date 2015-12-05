@@ -65,6 +65,11 @@ namespace E
         }
     }
 
+    void Object::radius_set(float r)
+    {
+        circle_.setRadius(r);
+    }
+
     void Object::draw(sf::RenderWindow& window)
     {
         switch (type_)
