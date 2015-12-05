@@ -18,5 +18,9 @@ namespace Objects
     private:
         float size_;
         sf::Vector2f pos_;
+        sf::Vector2f last_pos_;
+        float animation_cur_;
+        float animation_duration_;
+        float animation_distance_;
     };
 }
