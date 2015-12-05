@@ -9,16 +9,17 @@ namespace Char
 {
 
   Enemy::Enemy(E::Scene& scene, sf::RenderWindow& window,
-        float posX, float posY, int level, std::string name, int tileSize)
+        float posX, float posY, int level, std::string name, int tile_size)
     : E::GameObject(scene, window)
     , posX_(posX)
     , posY_(posY)
     , level_(level)
     , name_(name)
+    , tile_size_(tile_size)
   {
     auto en = E::Object(sf::CircleShape(7));
     en.circle_shape_get().setFillColor(E::Color::Red());
-    en.circle_shape_get().setPosition({posX * tileSize, posY * tileSize});
+    en.circle_shape_get().setPosition({posX * tile_size, posY * tile_size});
     object_add(name_, en);
   }
   void Enemy::update(E::Scene& scene, sf::RenderWindow& window,
@@ -38,11 +39,6 @@ namespace Char
   void Enemy::die()
   {
 
-  }
-
-  std::string& Enemy::get_name() const
-  {
-    return name_;
   }
 
   void Enemy::set_posX(float x)
