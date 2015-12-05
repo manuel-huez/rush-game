@@ -3,6 +3,8 @@
 
 # include <vector>
 # include <iostream>
+# include <memory>
+# include "room.hh"
 
 namespace RMaze
 {
@@ -21,9 +23,11 @@ namespace RMaze
       int get(int x, int y) const;
       unsigned size_get() const;
       float density;
+      std::vector<Room>& get_rooms();
     private:
       const unsigned size_;
       std::vector<int> map_;
+      std::vector<Room> rooms_;
   };
 
   std::ostream& operator<<(std::ostream& str, const Maze& ma);

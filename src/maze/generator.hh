@@ -23,7 +23,6 @@ namespace RMaze
       int find_closest_notlinked(Room& room) const;
       void link_rooms(Room& a, Room& b);
       Maze& maze_;
-      std::vector<Room> rooms_;
   };
 }
 
