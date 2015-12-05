@@ -8,7 +8,7 @@
 *.log
 *.core
 
-game
+lab
 
 # Compiled Object files
 *.slo
