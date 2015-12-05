@@ -14,7 +14,7 @@ namespace RMaze
       Maze(const unsigned size)
         : size_(size)
       {
-        map_ = std::vector<int>(size_ * size_);
+        map_ = std::vector<int>(size_ * size_, 100);
       }
       void create(int stretch, float density);
       const std::vector<int>& map_get() const;
