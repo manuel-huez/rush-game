@@ -30,6 +30,8 @@ namespace RMaze
       int posY_;
       int type_;
   };
+
+  bool operator==(const Room& room, const Room& room2) ;
 }
 
 #endif

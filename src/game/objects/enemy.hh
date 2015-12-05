@@ -15,7 +15,8 @@ namespace Char
   {
     public:
       Enemy(E::Scene& scene, sf::RenderWindow& window,
-          float posX, float poxY, int level, std::string name, int tile_size);
+          float posX, float poxY, int level, std::string name, int tile_size,
+          std::shared_ptr<std::vector<int>> path, int size, float speed);
       virtual void update(E::Scene& scene, sf::RenderWindow& window,
           sf::Time& dt);
       virtual void die();
@@ -24,15 +25,19 @@ namespace Char
       void set_posY(float y);
       float get_posY() const;
       float get_posX() const;
-    private:
+    protected:
       float posX_;
       float posY_;
       int level_;
       float desX_;
       float desY_;
       std::string name_;
-      std::shared_ptr<std::vector<int>> path_;
       int tile_size_;
+      std::shared_ptr<std::vector<int>> path_;
+      int size_;
+      int sens_;
+      std::vector<int>::size_type it_;
+      float speed_;
   };
 }
 
