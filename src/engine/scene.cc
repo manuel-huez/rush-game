@@ -1,5 +1,6 @@
 #include "scene.hh"
 #include "object.hh"
+#include "engine.hh"
 #include <map>
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -7,7 +8,7 @@
 namespace E
 {
 
-    Scene::Scene(sf::RenderWindow&)
+    Scene::Scene(Engine&, sf::RenderWindow&)
         : objects_{std::map<std::string, Object>()}
     {}
 
@@ -24,7 +25,8 @@ namespace E
         return objects_.at(key);
     }
 
-    void Scene::handle_events(sf::RenderWindow& window, sf::Time&)
+    void Scene::handle_events(Engine&,
+            sf::RenderWindow& window, sf::Time&)
     {
         sf::Event event;
         while (window.pollEvent(event))
@@ -34,7 +36,7 @@ namespace E
         }
     }
 
-    void Scene::update(sf::RenderWindow&, sf::Time&)
+    void Scene::update(Engine&, sf::RenderWindow&, sf::Time&)
     {}
 
     void Scene::draw(sf::RenderWindow& window) const

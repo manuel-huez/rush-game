@@ -1,5 +1,6 @@
 #include "main-scene.hh"
 #include "../../engine/scene.hh"
+#include "../../engine/engine.hh"
 #include "../../engine/object.hh"
 #include "../../engine/color.hh"
 #include "../../maze/maze.hh"
@@ -12,8 +13,8 @@
 namespace Scenes
 {
 
-  MainScene::MainScene(sf::RenderWindow& window)
-    : Scene::Scene(window)
+  MainScene::MainScene(E::Engine& engine, sf::RenderWindow& window)
+    : Scene::Scene(engine, window)
   {
     E::Object bg(sf::RectangleShape(sf::Vector2f(window.getSize())));
     bg.rectangle_shape_get().setFillColor(E::Color::Dark());
@@ -54,9 +55,10 @@ namespace Scenes
     }
   }
 
-  void MainScene::update(sf::RenderWindow& window, sf::Time& dt)
+  void MainScene::update(E::Engine& engine,
+          sf::RenderWindow& window, sf::Time& dt)
   {
-    Scene::update(window, dt);
+    Scene::update(engine, window, dt);
   }
 
 }
