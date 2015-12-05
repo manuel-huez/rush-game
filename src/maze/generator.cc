@@ -166,8 +166,6 @@ namespace RMaze
     {
       Room& closest = rooms_.at(find_closest_notlinked(room));
       closest.linked = true;
-      std::cout << closest.x_get() << "/" << closest.y_get() << " "
-        << room.x_get() << "/" << room.y_get() << "\n";
       link_rooms(room, closest);
       room = closest;
     }
