@@ -47,6 +47,24 @@ namespace E
         return text_;
     }
 
+    void Object::position_set(sf::Vector2f pos)
+    {
+        switch (type_)
+        {
+            case CIRCLE:
+                circle_.setPosition(pos);
+                break;
+            case RECTANGLE:
+                rectangle_.setPosition(pos);
+                break;
+            case TEXT:
+                text_.setPosition(pos);
+                break;
+            default:
+                break;
+        }
+    }
+
     void Object::draw(sf::RenderWindow& window)
     {
         switch (type_)

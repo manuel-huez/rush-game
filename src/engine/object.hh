@@ -26,6 +26,8 @@ namespace E
         sf::RectangleShape& rectangle_shape_get();
         sf::Text& text_get();
 
+        void position_set(sf::Vector2f pos);
+
         void draw(sf::RenderWindow& window);
 
     private:

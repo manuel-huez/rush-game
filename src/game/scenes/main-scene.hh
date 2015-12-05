@@ -2,7 +2,10 @@
 
 #include "../../engine/scene.hh"
 #include "../../engine/engine.hh"
+#include "../objects/player.hh"
+#include "../objects/maze.hh"
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 namespace Scenes
 {
@@ -10,7 +13,12 @@ namespace Scenes
     {
     public:
         MainScene(E::Engine& engine, sf::RenderWindow& window);
+        void handle_events(E::Engine& engine,
+                sf::RenderWindow& window, sf::Time& dt);
         void update(E::Engine& engine,
                 sf::RenderWindow& window, sf::Time& dt);
+    private:
+        std::shared_ptr<Objects::Player> player_;
+        std::shared_ptr<Objects::Maze>   maze_;
     };
 }
