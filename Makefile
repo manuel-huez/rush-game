@@ -11,7 +11,8 @@ CXXSRC = src/game.cc \
 				 src/game/scenes/menu-scene.cc \
 				 src/maze/maze.cc \
 				 src/maze/generator.cc \
-				 src/maze/room.cc
+				 src/maze/room.cc	\
+				 src/maze/world.cc
 CXXOBJ = $(CXXSRC:.cc=.o)
 CXXBIN = ./lab
 

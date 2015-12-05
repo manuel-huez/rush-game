@@ -2,22 +2,23 @@
 # define WORLD_H
 
 # include <vector>
-# include "Maze.hh"
-
+# include "maze.hh"
+# include <memory>
 namespace RMaze
 {
   class World
   {
     public:
-      World(unsigned size)
+      World(unsigned size, int stretch, float density)
         : size_(size)
       {
-        map_(size, std::vector<int>(size));
+        maze_ = std::make_shared<Maze>(50);
+        maze_->create(stretch, density);
       }
-      
+      Maze& get_maze();
     private:
       unsigned size_;
-      Maze& maze_;
+      std::shared_ptr<Maze> maze_;
   };
 }
 

@@ -14,7 +14,7 @@ namespace RMaze
       {
         map_ = std::vector<int>(size_ * size_);
       }
-      void create();
+      void create(int stretch, float density);
       const std::vector<int>& map_get() const;
       std::vector<int>& map_get();
       void set(int x, int y, int type);
