@@ -14,6 +14,9 @@ room until he gets caught.
 The enemies' field of vision is mostly based on our sound engine: when the
 player moves, sound waves come out of it. If these waves hit an enemy, he then
 hears you and catch you.
+Be careful though! Even the walls are covered with high sensitive captors. If
+you even try to touch a wall, you'll also be detected.. You won't have many
+friends in there!
 
 The whole game design is based on flat design, with a Mirror Edge type style:
 very flat and simple, but yet great to look at, with powerful colors.
