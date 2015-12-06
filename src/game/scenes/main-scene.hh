@@ -20,7 +20,8 @@ namespace Scenes
     private:
         void add_enemies(sf::RenderWindow& window, RMaze::Room& roomP);
         void add_sentinels(sf::RenderWindow& window, RMaze::Room& roomP);
-        void add_bonuses(sf::RenderWindow& window, RMaze::Maze& maze, int nb);
+        void add_bonuses(sf::RenderWindow& window, RMaze::Maze& maze,
+            float tile_size, int nb);
         std::shared_ptr<Objects::Player> player_;
         std::shared_ptr<Objects::MMaze>   maze_;
     };

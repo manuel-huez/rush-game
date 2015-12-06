@@ -16,7 +16,7 @@ namespace Objects
     , maze_(RMaze::World(50, 7, 0.35f).get_maze())
   {
     int mazeSize = 50;
-    float tileSize  = window.getSize().x / mazeSize;
+    float tileSize  = window.getSize().y / mazeSize;
     tileSize_ = tileSize;
     for (unsigned x = 0; x < maze_.size_get(); x++)
     {

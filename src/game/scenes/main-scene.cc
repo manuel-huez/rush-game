@@ -31,7 +31,7 @@ namespace Scenes
 
     add_enemies(window, roomP);
     add_sentinels(window, roomP);
-    add_bonuses(window, maze_->get_maze(), 15);
+    add_bonuses(window, maze_->get_maze(), maze_->get_tile_size(), 15);
 
     sf::Vector2f s(roomP.x_get() * maze_->get_tile_size(),
         roomP.y_get() * maze_->get_tile_size());
@@ -127,20 +127,22 @@ namespace Scenes
     }
   }
 
-  void MainScene::add_bonuses(sf::RenderWindow& window, RMaze::Maze& maze, int nb)
+  void MainScene::add_bonuses(sf::RenderWindow& window, RMaze::Maze& maze,
+      float tile_size, int nb)
   {
     for (int i = 0; i < nb; i++)
     {
-      int x = 0;
-      int y = 0;
+      float x = 0;
+      float y = 0;
       do {
         x = rand() % maze.size_get();
         y = rand() % maze.size_get();
-      }  while (maze.get(x, y) != 100);
-
-      int size = 4 * window.getSize().x / 50;
-      auto b = std::shared_ptr<B::Bonus>(*this, window, size, size, x, y);
-      b->set_bonus(rand() % 5 + 8);
+      }  while (maze.get(x, y) == 100);
+      int bonus = rand() % 5 + 12;
+      int size = bonus * (window.getSize().x / tile_size) / 50;
+      auto b = std::make_shared<B::Bonus>(*this, window, size, size,
+          x * tile_size, y * tile_size);
+      b->set_bonus(bonus);
 
       gobject_add("2Bonus" + i, std::static_pointer_cast<E::GameObject>(b));
     }
