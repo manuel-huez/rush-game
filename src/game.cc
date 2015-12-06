@@ -10,7 +10,7 @@ int main()
 {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(800, 800), "My game",
+    sf::RenderWindow window(sf::VideoMode(800, 800), "Sprinter Cell",
             sf::Style::Default, settings);
     E::Engine engine(800, 800, window);
 
