@@ -1,16 +1,23 @@
 #include "bonus.hh"
 
+#include "../../engine/color.hh"
+#include "../../engine/game-object.hh"
+
 namespace B
 {
   Bonus::Bonus(E::Scene& scene, sf::RenderWindow& window, int w, int h,
       float x, float y)
     : E::GameObject(scene, window)
+    , w_(w)
+    , h_(h)
     , x_(x)
     , y_(y)
   {
-    E::Object bo(sf::RectangleShape(sf::Vector2f({2, h})));
+    float wi = w;
+    float he = h;
+    E::Object bo(sf::RectangleShape(sf::Vector2f({wi, he})));
     bo.rectangle_shape_get().setFillColor(E::Color::Orange());
-    bg.rectangle_shape_get().setPosition(sf::Vector2f({x, y}));
+    bo.rectangle_shape_get().setPosition(sf::Vector2f({x, y}));
     object_add("0Bonus", bo);
   }
 
@@ -44,8 +51,8 @@ namespace B
     y_ = y;
   }
 
-  void update(E::Scene& scene, sf::RenderWindow& window, sf::Time& dt)
+  void Bonus::update(E::Scene& scene, sf::RenderWindow& window, sf::Time& dt)
   {
-    GameObject.update(scene, window, dt);
+    GameObject::update(scene, window, dt);
   }
 }

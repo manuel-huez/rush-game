@@ -2,6 +2,7 @@
 
 #include "../../engine/game-object.hh"
 #include "../../engine/scene.hh"
+#include "../../engine/color.hh"
 #include <SFML/Graphics.hpp>
 
 namespace Objects
