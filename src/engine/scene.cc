@@ -26,6 +26,11 @@ namespace E
         return *gobjects_.at(key);
     }
 
+    void Scene::gobject_delete(std::string key)
+    {
+        gobjects_.erase(key);
+    }
+
     void Scene::handle_events(Engine&,
             sf::RenderWindow& window, sf::Time&)
     {

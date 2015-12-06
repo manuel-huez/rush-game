@@ -6,6 +6,9 @@
 #include <SFML/System.hpp>
 #include <memory>
 
+int score_g      = 0;
+int best_score_g = 0;
+
 int main()
 {
     sf::ContextSettings settings;

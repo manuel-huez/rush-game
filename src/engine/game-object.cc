@@ -62,6 +62,15 @@ namespace E
         objects_[key] = obj;
     }
 
+    void GameObject::object_delete(std::string key)
+    {
+        if (objects_.find(key) == objects_.end())
+            throw std::logic_error("Kye not found for object (delete): "
+                    + key);
+
+        objects_.erase(key);
+    }
+
     void GameObject::circle_add(std::string key, sf::CircleShape c)
     {
         circles_[key] = c;

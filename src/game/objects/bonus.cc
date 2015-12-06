@@ -40,7 +40,7 @@ namespace B
   {
     return y_;
   }
-  
+
   void Bonus::set_x(float x)
   {
     x_ = x;

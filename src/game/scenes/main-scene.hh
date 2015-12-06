@@ -9,6 +9,9 @@
 #include <vector>
 #include <string>
 
+extern int score_g;
+extern int best_score_g;
+
 namespace Scenes
 {
     class MainScene : public E::Scene
@@ -30,5 +33,6 @@ namespace Scenes
         std::shared_ptr<Objects::Player> player_;
         std::shared_ptr<Objects::MMaze>  maze_;
         std::vector<std::string>         enemies_;
+        std::vector<std::string>         bonuses_;
     };
 }

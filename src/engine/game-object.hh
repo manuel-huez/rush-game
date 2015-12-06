@@ -20,6 +20,7 @@ namespace E
         void object_add(std::string key, Object obj, bool collision = true);
         Object& object_get(std::string key);
         void object_set(std::string key, Object obj);
+        void object_delete(std::string key);
 
         void circle_add(std::string key, sf::CircleShape c);
         sf::CircleShape& circle_get(std::string key);

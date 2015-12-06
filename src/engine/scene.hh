@@ -20,6 +20,7 @@ namespace E
 
         void gobject_add(std::string key, std::shared_ptr<GameObject> obj);
         GameObject& gobject_get(std::string key);
+        void gobject_delete(std::string key);
         virtual void handle_events(Engine& engine,
                 sf::RenderWindow& window, sf::Time& dt);
         virtual void update(Engine& engine,
