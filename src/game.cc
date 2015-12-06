@@ -11,7 +11,7 @@ int main()
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(800, 800), "My game",
-            sf::Style::Default, settings);
+            sf::Style::Fullscreen, settings);
     E::Engine engine(800, 800, window);
 
     auto s = std::make_shared<Scenes::MenuScene>(engine, window);
