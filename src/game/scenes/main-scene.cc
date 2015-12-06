@@ -69,10 +69,25 @@ namespace Scenes
     (*player_).position_set(pos);
     if ((*maze_).intersects(player_->circle_get("1point")))
     {
-        auto s = std::make_shared<Scenes::RetryMenuScene>(engine, window);
-        engine.scene_set(std::static_pointer_cast<E::Scene>(s));
-        return;
+      die(engine, window);
+      return;
     }
+
+    for (auto x: enemies_)
+    {
+      if (player_->intersects(gobject_get(x)))
+      {
+        die(engine, window);
+        return;
+      }
+    }
+  }
+
+  void MainScene::die(E::Engine& engine, sf::RenderWindow& window)
+  {
+    auto s = std::make_shared<Scenes::RetryMenuScene>(engine, window);
+    engine.scene_set(std::static_pointer_cast<E::Scene>(s));
+    return;
   }
 
   void MainScene::update(E::Engine& engine,
@@ -109,7 +124,9 @@ namespace Scenes
           "2Ennemy", maze_->get_tile_size(), pa.get_path(x2, y2), size,
           (rand() % 8 + 12.f) / 10);
 
-      gobject_add("2Enemy" + i, std::static_pointer_cast<E::GameObject>(anmy));
+      std::string name = "2Enemy" + std::to_string(i);
+      gobject_add(name, std::static_pointer_cast<E::GameObject>(anmy));
+      enemies_.push_back(name);
     }
   }
   void MainScene::add_sentinels(sf::RenderWindow& window,
@@ -134,8 +151,9 @@ namespace Scenes
       auto anmy = std::make_shared<EN::Sentinel>(*this, window, x, y, 1,
           "2Sentinel", maze_->get_tile_size(), size);
 
-      gobject_add("2Sentinel" + i,
-          std::static_pointer_cast<E::GameObject>(anmy));
+      std::string name = "2Sentinel" + std::to_string(i);
+      gobject_add(name, std::static_pointer_cast<E::GameObject>(anmy));
+      enemies_.push_back(name);
     }
   }
 
@@ -156,7 +174,8 @@ namespace Scenes
           x * tile_size, y * tile_size);
       b->set_bonus(bonus);
 
-      gobject_add("2Bonus" + i, std::static_pointer_cast<E::GameObject>(b));
+      std::string name = "2Bonus" + std::to_string(i);
+      gobject_add(name, std::static_pointer_cast<E::GameObject>(b));
     }
   }
 
