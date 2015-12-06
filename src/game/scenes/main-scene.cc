@@ -70,6 +70,13 @@ namespace Scenes
       pos.x -= speed * dt.asSeconds();
 
     (*player_).position_set(pos);
+    if (gobject_get("3Exit").intersects(player_->circle_get("1point")))
+    {
+      auto s = std::make_shared<Scenes::MainScene>(engine, window);
+      engine.scene_set(std::static_pointer_cast<E::Scene>(s));
+      return;
+    }
+
     if ((*maze_).intersects(player_->circle_get("1point")))
     {
       die(engine, window);
