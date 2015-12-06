@@ -34,7 +34,7 @@ namespace Scenes
     auto roomE  = ma.get_rooms().at(rand() % (ma.get_rooms().size() - 1) + 1);
 
     add_enemies(window, roomP);
-    add_sentinels(window, roomP);
+    add_sentinels(window, roomP, roomE);
     add_bonuses(window, maze_->get_maze(), maze_->get_tile_size(), 15);
     add_exit(window, roomE);
 
@@ -116,7 +116,7 @@ namespace Scenes
     }
   }
   void MainScene::add_sentinels(sf::RenderWindow& window,
-      RMaze::Room& roomP)
+      RMaze::Room& roomP, RMaze::Room& roomE)
   {
     auto ma = maze_->get_maze();
     for (int i = 0; i < 4; i++)
@@ -124,12 +124,8 @@ namespace Scenes
       int size = ma.size_get();
 
       auto room  = ma.get_rooms().at(rand() % ma.get_rooms().size());
-      auto room2 = ma.get_rooms().at(rand() % ma.get_rooms().size());
-      while (room2 == room || room == roomP || room2 == roomP)
-      {
+      while (room == roomP || room == roomE)
         room  = ma.get_rooms().at(rand() % ma.get_rooms().size());
-        room2 = ma.get_rooms().at(rand() % ma.get_rooms().size());
-      }
 
       int x  = room.x_get()  + room.width_get()   / 2;
       int y  = room.y_get()  + room.height_get()  / 2;
@@ -167,21 +163,13 @@ namespace Scenes
   {
     auto ma = maze_->get_maze();
 
-    auto room  = ma.get_rooms().at(rand() % ma.get_rooms().size());
-    auto room2 = ma.get_rooms().at(rand() % ma.get_rooms().size());
-    while (room2 == room || room == roomE || room2 == roomE)
-    {
-      room  = ma.get_rooms().at(rand() % ma.get_rooms().size());
-      room2 = ma.get_rooms().at(rand() % ma.get_rooms().size());
-    }
-
-    int x  = room.x_get()  + room.width_get()   / 2;
-    int y  = room.y_get()  + room.height_get()  / 2;
+    int x  = roomE.x_get()  + roomE.width_get()   / 2;
+    int y  = roomE.y_get()  + roomE.height_get()  / 2;
 
     float tile_size = maze_->get_tile_size();
 
     auto ou = std::make_shared<B::Out>(*this, window,
-        10 * (window.getSize().y / tile_size) / 50, x * tile_size, y * tile_size);
+        20 * (window.getSize().y / tile_size) / 50, x * tile_size, y * tile_size);
 
     gobject_add("3Exit",
         std::static_pointer_cast<E::GameObject>(ou));
