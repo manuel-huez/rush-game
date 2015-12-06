@@ -139,7 +139,7 @@ namespace Scenes
         y = rand() % maze.size_get();
       }  while (maze.get(x, y) == 100);
       int bonus = rand() % 5 + 12;
-      int size = bonus * (window.getSize().x / tile_size) / 50;
+      int size = bonus * (window.getSize().y / tile_size) / 50;
       auto b = std::make_shared<B::Bonus>(*this, window, size, size,
           x * tile_size, y * tile_size);
       b->set_bonus(bonus);
