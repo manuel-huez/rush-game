@@ -9,6 +9,7 @@
 *.core
 
 lab
+rewrite.sh
 
 # Compiled Object files
 *.slo
