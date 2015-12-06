@@ -4,6 +4,7 @@
 #include "../objects/enemy.hh"
 #include "../objects/sentinel.hh"
 #include "../objects/player.hh"
+#include "../objects/bonus.hh"
 #include "../../engine/scene.hh"
 #include "../../engine/engine.hh"
 #include "../../engine/game-object.hh"
@@ -30,10 +31,10 @@ namespace Scenes
 
     add_enemies(window, roomP);
     add_sentinels(window, roomP);
-    add_bonuses(window, roomP, maze_->get_maze());
+    add_bonuses(window, maze_->get_maze(), 15);
 
     sf::Vector2f s(roomP.x_get() * maze_->get_tile_size(),
-            roomP.y_get() * maze_->get_tile_size());
+        roomP.y_get() * maze_->get_tile_size());
     player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
     gobject_add("2player", std::static_pointer_cast<E::GameObject>(player_));
   }
@@ -99,7 +100,7 @@ namespace Scenes
       gobject_add("2Enemy" + i, std::static_pointer_cast<E::GameObject>(anmy));
     }
   }
-void MainScene::add_sentinels(sf::RenderWindow& window,
+  void MainScene::add_sentinels(sf::RenderWindow& window,
       RMaze::Room& roomP)
   {
     auto ma = maze_->get_maze();
@@ -121,7 +122,26 @@ void MainScene::add_sentinels(sf::RenderWindow& window,
       auto anmy = std::make_shared<EN::Sentinel>(*this, window, x, y, 1,
           "2Sentinel", maze_->get_tile_size(), size);
 
-      gobject_add("2Sentinel" + i, std::static_pointer_cast<E::GameObject>(anmy));
+      gobject_add("2Sentinel" + i,
+          std::static_pointer_cast<E::GameObject>(anmy));
+    }
+  }
+
+  void MainScene::add_bonuses(sf::RenderWindow& window, RMaze::Maze& maze, int nb)
+  {
+    for (int i = 0; i < nb; i++)
+    {
+      int x = 0;
+      int y = 0;
+      do {
+        x = rand() % maze.size_get();
+        y = rand() % maze.size_get();
+      }  while (maze.get(x, y) != 100);
+
+      auto b = std::shared_ptr<B::Bonus>(*this, window, x, y);
+      b->set_bonus(rand() % 5 + 8);
+
+      gobject_add("2Bonus" + i, std::static_pointer_cast<E::GameObject>(b));
     }
   }
 
