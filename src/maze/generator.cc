@@ -39,6 +39,7 @@ namespace RMaze
 
   void Generator::generate_rooms(int stretch, float density)
   {
+    int tries = 0;
     std::vector<Room>& rooms = maze_.get_rooms();
     while (true)
     {
@@ -52,9 +53,11 @@ namespace RMaze
       {
         rooms.push_back(room);
         fill_room(room);
-        if (maze_.get_rooms().size() > 1 && calculate_density(room) > density)
+        if ((maze_.get_rooms().size() > 1 && calculate_density(room) > density)
+            || tries > 70)
           break;
       }
+      tries++;
     }
   }
 
