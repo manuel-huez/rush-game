@@ -30,6 +30,7 @@ namespace Scenes
 
     add_enemies(window, roomP);
     add_sentinels(window, roomP);
+    add_bonuses(window, roomP, maze_->get_maze());
 
     sf::Vector2f s(roomP.x_get() * maze_->get_tile_size(),
             roomP.y_get() * maze_->get_tile_size());

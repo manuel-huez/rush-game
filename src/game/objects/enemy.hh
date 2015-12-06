@@ -29,8 +29,6 @@ namespace Char
       float posX_;
       float posY_;
       int level_;
-      float desX_;
-      float desY_;
       std::string name_;
       int tile_size_;
       std::shared_ptr<std::vector<int>> path_;
