@@ -132,7 +132,8 @@ void MainScene::add_sentinels(sf::RenderWindow& window,
       auto anmy = std::make_shared<EN::Sentinel>(*this, window, x, y, 1,
           "2Sentinel", maze_->get_tile_size(), size);
 
-      gobject_add("2Sentinel" + i, std::static_pointer_cast<E::GameObject>(anmy));
+      gobject_add("2Sentinel" + i,
+              std::static_pointer_cast<E::GameObject>(anmy));
     }
   }
 
