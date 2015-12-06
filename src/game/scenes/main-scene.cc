@@ -31,7 +31,8 @@ namespace Scenes
     add_enemies(window, roomP);
     add_sentinels(window, roomP);
 
-    sf::Vector2f s(roomP.x_get(), roomP.y_get());
+    sf::Vector2f s(roomP.x_get() * maze_->get_tile_size(),
+            roomP.y_get() * maze_->get_tile_size());
     player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
     gobject_add("2player", std::static_pointer_cast<E::GameObject>(player_));
   }
