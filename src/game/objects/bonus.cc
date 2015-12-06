@@ -19,6 +19,16 @@ namespace B
     return x_;
   }
 
+  int Bonus::get_bonus() const
+  {
+    return bonus_;
+  }
+
+  void Bonus::set_bonus(int bonus)
+  {
+    bonus_ = bonus;
+  }
+
   float Bonus::get_y() const
   {
     return y_;

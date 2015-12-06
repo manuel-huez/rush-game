@@ -138,7 +138,8 @@ namespace Scenes
         y = rand() % maze.size_get();
       }  while (maze.get(x, y) != 100);
 
-      auto b = std::shared_ptr<B::Bonus>(*this, window, x, y);
+      int size = 4 * window.getSize().x / 50;
+      auto b = std::shared_ptr<B::Bonus>(*this, window, size, size, x, y);
       b->set_bonus(rand() % 5 + 8);
 
       gobject_add("2Bonus" + i, std::static_pointer_cast<E::GameObject>(b));
