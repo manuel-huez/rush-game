@@ -36,7 +36,7 @@ namespace Char
     auto ray = E::Object(sf::CircleShape(0));
     ray.circle_shape_get().setFillColor(E::Color::RedOpacity());
     ray.circle_shape_get().setOutlineColor(E::Color::Red());
-    ray.circle_shape_get().setOutlineThickness(tile_size / 7f);
+    ray.circle_shape_get().setOutlineThickness(tile_size / 7.f);
     object_add("0ray", ray, true);
 
   }
