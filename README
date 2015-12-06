@@ -1,1 +1,33 @@
-# rush-game
+SPRINTER CELL
+=============
+
+Stealth game
+
+
+SPRINTER CELL is a game where the player has to hide from the enemies,
+represented by the red dots.
+The enemies must not detect the player while he tries to collect as many
+bonuses as possible. If the player gets caught, the game ends and displays
+the player's best score.
+As the rooms are entirely randomly generated, the player may go from room to
+room until he gets caught.
+The enemies' field of vision is mostly based on our sound engine: when the
+player moves, sound waves come out of it. If these waves hit an enemy, he then
+hears you and catch you.
+
+The whole game design is based on flat design, with a Mirror Edge type style:
+very flat and simple, but yet great to look at, with powerful colors.
+
+
+Features:
+--------
+
+* Sound engine
+* Randomized levels
+* Patrols / AI
+* Scoreboard
+* Bonuses
+* Some bonuses worth more than others
+* Some patrols walk faster than others
+* Different types of enemies
+* Menus

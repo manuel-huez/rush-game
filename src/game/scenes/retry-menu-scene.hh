@@ -7,20 +7,20 @@
 namespace Scenes
 {
 
-    enum CurrentMenuE {
-        Play,
-        Quit
+    enum CurrentRetryMenuE {
+        Retry,
+        RQuit
     };
 
-    class MenuScene : public E::Scene
+    class RetryMenuScene : public E::Scene
     {
     public:
-        MenuScene(E::Engine& engine, sf::RenderWindow& window);
+        RetryMenuScene(E::Engine& engine, sf::RenderWindow& window);
 
         void handle_events(E::Engine& engine,
                 sf::RenderWindow& window, sf::Time& dt);
     private:
-        CurrentMenuE cur_menu_;
+        CurrentRetryMenuE cur_menu_;
     };
 
 }
