@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++14 
+CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++14
 LDLIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
 CXXSRC = src/game.cc \
@@ -29,7 +29,7 @@ CXXSRC = src/game.cc \
 CXXOBJ = $(CXXSRC:.cc=.o)
 CXXBIN = ./lab
 
-all: game
+all: bin
 
 bin: $(CXXOBJ)
 	$(CXX) $(CXXFLAGS) $(LDLIBS) $^ -o $(CXXBIN)
