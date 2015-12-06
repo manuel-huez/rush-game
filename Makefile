@@ -22,7 +22,7 @@ CXXSRC = src/game.cc \
 				 src/pathfinding/path.cc \
 				 src/game/objects/enemy.cc \
 				 src/game/objects/sentinel.cc \
-				 src/game/objects/bonus.hh
+				 src/game/objects/bonus.cc
 CXXOBJ = $(CXXSRC:.cc=.o)
 CXXBIN = ./lab
 
