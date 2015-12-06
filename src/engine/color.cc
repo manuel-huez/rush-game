@@ -15,6 +15,12 @@ namespace E
         return c;
     }
 
+    sf::Color& Color::RedOpacity()
+    {
+        static sf::Color c(192, 57, 43, 125);
+        return c;
+    }
+
     sf::Color& Color::Blue()
     {
         static sf::Color c(41, 128, 185);

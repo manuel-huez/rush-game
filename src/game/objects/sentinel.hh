@@ -12,8 +12,7 @@ namespace EN
       Sentinel(E::Scene& scene, sf::RenderWindow& window,
           float posX, float poY, int level, std::string name, int tile_size,
           int size);
-      virtual void update(E::Scene& scene, sf::RenderWindow& window,
-          sf::Time& dt);
+      void update(E::Scene&, sf::RenderWindow&, sf::Time& dt);
   };
 }
 

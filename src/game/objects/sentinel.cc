@@ -6,14 +6,11 @@ namespace EN
       float posX, float posY, int level, std::string name, int tile_size,
       int size)
     : Char::Enemy(scene, window, posX, posY, level, name, tile_size,
-        nullptr, size, 0.f)
+        nullptr, size, 0.f, 5.f, (float)tile_size * 3.f)
   {}
 
-  void Sentinel::update(E::Scene& scene, sf::RenderWindow& window, sf::Time& dt)
+  void Sentinel::update(E::Scene&, sf::RenderWindow&, sf::Time& dt)
   {
-    scene = scene;
-    if (window.getSize().x > 1)
-      return;
-    dt = dt;
+    update_ray(dt);
   }
 }

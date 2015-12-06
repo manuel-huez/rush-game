@@ -43,7 +43,8 @@ namespace Scenes
                 * maze_->get_tile_size(),
                 (roomP.y_get() + roomP.height_get() / 2)
                 * maze_->get_tile_size());
-        player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
+        player_ = std::make_shared<Objects::Player>(*this, window,
+                0.4f * maze_->get_tile_size(), s);
         gobject_add("2player", std::static_pointer_cast<E::GameObject>(
                     player_));
     }
