@@ -1,5 +1,6 @@
 #include "main-scene.hh"
 #include "menu-scene.hh"
+#include "retry-menu-scene.hh"
 #include "../objects/background.hh"
 #include "../objects/maze.hh"
 #include "../objects/enemy.hh"
@@ -66,8 +67,7 @@ namespace Scenes
     (*player_).position_set(pos);
     if ((*maze_).intersects(player_->circle_get("1point")))
     {
-        std::cout << "DEAD" << std::endl;
-        auto s = std::make_shared<Scenes::MenuScene>(engine, window);
+        auto s = std::make_shared<Scenes::RetryMenuScene>(engine, window);
         engine.scene_set(std::static_pointer_cast<E::Scene>(s));
         return;
     }
