@@ -1,4 +1,5 @@
 #include "main-scene.hh"
+#include "menu-scene.hh"
 #include "../objects/background.hh"
 #include "../objects/maze.hh"
 #include "../objects/enemy.hh"
@@ -31,8 +32,9 @@ namespace Scenes
     add_enemies(window, roomP);
     add_sentinels(window, roomP);
 
-    sf::Vector2f s(roomP.x_get() * maze_->get_tile_size(),
-            roomP.y_get() * maze_->get_tile_size());
+    sf::Vector2f s((roomP.x_get() + roomP.width_get() / 2)
+                * maze_->get_tile_size(),
+            (roomP.y_get() + roomP.height_get() / 2) * maze_->get_tile_size());
     player_ = std::make_shared<Objects::Player>(*this, window, 5, s);
     gobject_add("2player", std::static_pointer_cast<E::GameObject>(player_));
   }
@@ -41,6 +43,13 @@ namespace Scenes
       sf::RenderWindow& window, sf::Time& dt)
   {
     Scene::handle_events(engine, window, dt);
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        auto s = std::make_shared<Scenes::MenuScene>(engine, window);
+        engine.scene_set(std::static_pointer_cast<E::Scene>(s));
+        return;
+    }
 
     auto pos    = (*player_).position_get();
     float speed = 5 * maze_->get_tile_size();
@@ -55,10 +64,13 @@ namespace Scenes
       pos.x -= speed * dt.asSeconds();
 
     (*player_).position_set(pos);
-    if ((*player_).intersects(*maze_))
-      std::cout << "Collides" << std::endl;
-    else
-      std::cout << "Doesnt collide" << std::endl;
+    if ((*maze_).intersects(player_->circle_get("1point")))
+    {
+        std::cout << "DEAD" << std::endl;
+        auto s = std::make_shared<Scenes::MenuScene>(engine, window);
+        engine.scene_set(std::static_pointer_cast<E::Scene>(s));
+        return;
+    }
   }
 
   void MainScene::update(E::Engine& engine,
