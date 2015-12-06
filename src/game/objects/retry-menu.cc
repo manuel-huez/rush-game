@@ -1,4 +1,4 @@
-#include "menu.hh"
+#include "retry-menu.hh"
 #include "../../engine/game-object.hh"
 #include "../../engine/scene.hh"
 #include "../../engine/object.hh"
@@ -8,18 +8,19 @@
 
 namespace Objects
 {
-    Menu::Menu(E::Scene& scene, sf::RenderWindow& window)
+    RetryMenu::RetryMenu(E::Scene& scene, sf::RenderWindow& window)
         : GameObject(scene, window)
     {
-        E::Object title(sf::Text("Sprinter Cell", E::Font::Default(), 40));
+        E::Object title(sf::Text("Damn.. You've been spotted!",
+                    E::Font::Default(), 40));
         title.text_get().setPosition({20, 20});
-        title.text_get().setColor(E::Color::White());
+        title.text_get().setColor(E::Color::Red());
         object_add("title_text", title);
 
-        E::Object play(sf::Text("play", E::Font::Default(), 25));
+        E::Object play(sf::Text("retry", E::Font::Default(), 25));
         play.text_get().setPosition({20, 80});
         play.text_get().setColor(E::Color::White());
-        object_add("play_text", play);
+        object_add("retry_text", play);
 
         E::Object quit(sf::Text("quit", E::Font::Default(), 20));
         quit.text_get().setPosition({20, 110});

@@ -11,9 +11,11 @@ CXXSRC = src/game.cc \
 				 src/engine/font.cc \
 				 src/game/scenes/main-scene.cc \
 				 src/game/scenes/menu-scene.cc \
+				 src/game/scenes/retry-menu-scene.cc \
 				 src/game/objects/background.cc \
 				 src/game/objects/maze.cc \
 				 src/game/objects/menu.cc \
+				 src/game/objects/retry-menu.cc \
 				 src/game/objects/player.cc \
 				 src/maze/maze.cc \
 				 src/maze/generator.cc \
