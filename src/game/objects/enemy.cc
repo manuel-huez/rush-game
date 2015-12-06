@@ -25,7 +25,7 @@ namespace Char
     auto en = E::Object(sf::CircleShape(7));
     en.circle_shape_get().setFillColor(E::Color::Red());
     en.circle_shape_get().setPosition({posX * tile_size, posY * tile_size});
-    object_add(name_, en);
+    object_add(name_, en, true);
     it_ = 0;;
     sens_ = 1;
   }

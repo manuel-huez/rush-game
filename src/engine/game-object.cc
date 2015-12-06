@@ -108,8 +108,10 @@ namespace E
     bool GameObject::intersects(GameObject& obj)
     {
         for (auto x: obj.circles_)
+        {
             if (intersects(x.second))
                 return true;
+        }
 
         return false;
     }
