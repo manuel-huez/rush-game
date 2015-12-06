@@ -22,6 +22,7 @@ namespace Scenes
         void add_sentinels(sf::RenderWindow& window, RMaze::Room& roomP);
         void add_bonuses(sf::RenderWindow& window, RMaze::Maze& maze,
             float tile_size, int nb);
+        void add_exit(sf::RenderWindow& window, RMaze::Room& roomE);
         std::shared_ptr<Objects::Player> player_;
         std::shared_ptr<Objects::MMaze>   maze_;
     };

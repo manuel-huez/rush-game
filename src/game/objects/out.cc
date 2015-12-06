@@ -5,7 +5,7 @@
 
 namespace B
 {
-  Bonus::Bonus(E::Scene& scene, sf::RenderWindow& window, int size,
+  Out::Out(E::Scene& scene, sf::RenderWindow& window, int size,
       float x, float y)
     : E::GameObject(scene, window)
     , size_(size)
@@ -13,33 +13,39 @@ namespace B
     , y_(y)
   {
     float si = size;
-    E::Object out(sf::RectangleShape(sf::Vector2f({si, si})));
-    out.rectangle_shape_get().setFillColor(E::Color::Orange());
+    E::Object out(sf::RectangleShape(sf::Vector2f({si * 0.7f, si * 0.7f})));
+    out.rectangle_shape_get().setFillColor(E::Color::LightGreen());
     out.rectangle_shape_get().setPosition(sf::Vector2f({x, y}));
-    object_add("0Out", out);
+    object_add("1Out", out);
+
+    E::Object out1(sf::RectangleShape(sf::Vector2f({si, si})));
+    out1.rectangle_shape_get().setFillColor(E::Color::Green());
+    out1.rectangle_shape_get().setPosition(sf::Vector2f({x, y}));
+    object_add("0Out", out1);
+
   }
 
-  float Bonus::get_x() const
+  float Out::get_x() const
   {
     return x_;
   }
 
-  float Bonus::get_y() const
+  float Out::get_y() const
   {
     return y_;
   }
   
-  void Bonus::set_x(float x)
+  void Out::set_x(float x)
   {
     x_ = x;
   }
 
-  void Bonus::set_y(float y)
+  void Out::set_y(float y)
   {
     y_ = y;
   }
 
-  void Bonus::update(E::Scene& scene, sf::RenderWindow& window, sf::Time& dt)
+  void Out::update(E::Scene& scene, sf::RenderWindow& window, sf::Time& dt)
   {
     GameObject::update(scene, window, dt);
   }
