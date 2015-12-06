@@ -2,9 +2,17 @@
 
 namespace B
 {
-  Bonus::Bonus(E::Scene& scene, sf::RenderWindow& window)
+  Bonus::Bonus(E::Scene& scene, sf::RenderWindow& window, int w, int h,
+      float x, float y)
     : E::GameObject(scene, window)
-  {}
+    , x_(x)
+    , y_(y)
+  {
+    E::Object bo(sf::RectangleShape(sf::Vector2f({2, h})));
+    bo.rectangle_shape_get().setFillColor(E::Color::Orange());
+    bg.rectangle_shape_get().setPosition(sf::Vector2f({x, y}));
+    object_add("0Bonus", bo);
+  }
 
   float Bonus::get_x() const
   {
@@ -28,6 +36,6 @@ namespace B
 
   void update(E::Scene& scene, sf::RenderWindow& window, sf::Time& dt)
   {
-    //
+    GameObject.update(scene, window, dt);
   }
 }
