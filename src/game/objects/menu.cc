@@ -11,7 +11,7 @@ namespace Objects
     Menu::Menu(E::Scene& scene, sf::RenderWindow& window)
         : GameObject(scene, window)
     {
-        E::Object title(sf::Text("Menu", E::Font::Default(), 40));
+        E::Object title(sf::Text("Sprinter Cell", E::Font::Default(), 40));
         title.text_get().setPosition({20, 20});
         title.text_get().setColor(E::Color::White());
         object_add("title_text", title);
