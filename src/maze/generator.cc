@@ -49,12 +49,13 @@ namespace RMaze
       int x = rand() % (maze_.size_get() - width - 2) + 2;
       int y = rand() % (maze_.size_get() - height - 2) + 2;
       Room room(width, height, x, y, 2);
+      if (tries > 70)
+        break;
       if (is_place_available(room))
       {
         rooms.push_back(room);
         fill_room(room);
-        if ((maze_.get_rooms().size() > 1 && calculate_density(room) > density)
-            || tries > 70)
+        if (maze_.get_rooms().size() > 1 && calculate_density(room) > density)
           break;
       }
       tries++;
