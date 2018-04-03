@@ -20,7 +20,6 @@ namespace B
       void set_x(float x);
       void set_y(float y);
     private:
-      int size_;
       float x_;
       float y_;
   };

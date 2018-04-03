@@ -15,17 +15,17 @@ namespace Objects
         float w = 30;
         float h = window.getSize().y / 2 - 50;
         title.text_get().setPosition({w, h});
-        title.text_get().setColor(E::Color::Green());
+        title.text_get().setFillColor(E::Color::Green());
         object_add("title_text", title);
 
         E::Object play(sf::Text("play", E::Font::Default(), 25));
         play.text_get().setPosition({w, h + 50});
-        play.text_get().setColor(E::Color::White());
+        play.text_get().setFillColor(E::Color::White());
         object_add("play_text", play);
 
         E::Object quit(sf::Text("quit", E::Font::Default(), 20));
         quit.text_get().setPosition({w, h + 80});
-        quit.text_get().setColor(E::Color::Red());
+        quit.text_get().setFillColor(E::Color::Red());
         object_add("quit_text", quit);
     }
 }

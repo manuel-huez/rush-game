@@ -12,7 +12,7 @@ namespace RMaze
       World(unsigned size, int stretch, float density)
         : size_(size)
       {
-        maze_ = std::make_shared<Maze>(50);
+        maze_ = std::make_shared<Maze>(size);
         maze_->create(stretch, density);
       }
       Maze& get_maze();

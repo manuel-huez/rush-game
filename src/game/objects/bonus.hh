@@ -22,8 +22,6 @@ namespace B
       int get_bonus() const;
       void set_bonus(int bonus);
     private:
-      int w_;
-      int h_;
       float x_;
       float y_;
       int bonus_;

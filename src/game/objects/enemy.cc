@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <iostream>
+#include <cmath>
 namespace Char
 {
 

@@ -43,7 +43,6 @@ namespace RMaze
     std::vector<Room>& rooms = maze_.get_rooms();
     while (true)
     {
-      stretch = stretch;
       int width = rand() % (stretch + stretch / 2) + (stretch - stretch / 2);
       int height = rand() % (stretch + stretch / 2) + (stretch - stretch / 2);
       int x = rand() % (maze_.size_get() - width - 2) + 2;

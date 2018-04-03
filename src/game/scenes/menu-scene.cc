@@ -10,6 +10,7 @@
 #include "main-scene.hh"
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <string>
 
 namespace Scenes
 {
@@ -28,8 +29,8 @@ namespace Scenes
       auto radar =  std::make_shared<EN::Sentinel>(*this, window,
           (rand() % (window.getSize().x - 350) + 300) / 20,
           (rand() % (window.getSize().y - 100) + 30) / 20,
-          1, "2Radar" + i, 20, rand() % 5 + 6);
-      gobject_add("2Radar" + i, std::static_pointer_cast<E::GameObject>(radar));
+          1, "2Radar" + std::to_string(i), 20, rand() % 5 + 6);
+      gobject_add("2Radar" + std::to_string(i), std::static_pointer_cast<E::GameObject>(radar));
     }
   }
 

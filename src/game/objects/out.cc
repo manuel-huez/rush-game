@@ -8,7 +8,6 @@ namespace B
   Out::Out(E::Scene& scene, sf::RenderWindow& window, int size,
       float x, float y)
     : E::GameObject(scene, window)
-    , size_(size)
     , x_(x)
     , y_(y)
   {

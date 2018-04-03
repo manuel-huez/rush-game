@@ -8,8 +8,6 @@ namespace B
   Bonus::Bonus(E::Scene& scene, sf::RenderWindow& window, int w, int h,
       float x, float y)
     : E::GameObject(scene, window)
-    , w_(w)
-    , h_(h)
     , x_(x)
     , y_(y)
   {
